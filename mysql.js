@@ -116,6 +116,18 @@ async function testSearch (msClient) {
     msClient.end();
 }
 
+function removeArrayDuplicate (array) {
+    for(let i = 0; i < array.length; i++){
+        for(let j = i + 1; j < array.length; j++){
+            if(array[j] == array[i]){
+                array.splice(j, 1);
+                j -= 1;
+            }
+        }
+    }
+    return array;
+}
+ 
 function decomposeSearchPhrase (std_search_phrase) {
     this.generateKeys = (phrase) => {
         let single_keys = phrase.split(/\s+/);
@@ -127,8 +139,8 @@ function decomposeSearchPhrase (std_search_phrase) {
             }
         };
         return {
-            single_keys: single_keys,
-            compound_keys: compound_keys
+            single_keys: removeArrayDuplicate(single_keys),
+            compound_keys: removeArrayDuplicate(compound_keys)
         };
     }
     let unsigned_search = removeVnCharacter(std_search_phrase);
@@ -143,93 +155,206 @@ function decomposeSearchPhrase (std_search_phrase) {
     return searchDecompsed;
 }
 
-async function searchProduct (phrase) {
-    this.generateSql = (keywords, mode, is_compound, weight) => {
-        if(keywords.length < 1) return null;
-        let like_mode = "";
-        let keyword_prefix  = "";
-        let keyword_postfix = "";
-        if(mode == "strict"){
-            like_mode = "LIKE BINARY";
-            keyword_prefix = "";
-            keyword_postfix = "";
-        }else if(mode == "ease"){
-            like_mode = "LIKE";
-            keyword_prefix = "%";
-            keyword_postfix = "%";
-        }else{
-            return null;
-        };
+function searchProductIndex (phrase) {
+    this.generateSql = (search_config) => {
+        let {keywords, like_mode, is_compound, weight, prefix, postfix} = {...search_config};
+        if(!like_mode || !keywords || keywords.length < 1) return null;
         let condition = "";
         keywords.forEach(key => {
-            condition += `\`key_word\` ${like_mode} "${keyword_prefix}${key}${keyword_postfix}" OR `;
+            condition += `\`key_word\` ${like_mode} "${prefix}${key}${postfix}" OR `;
         });
         condition = condition.replace(/\sOR\s$/, "");
         let sql = `SELECT GROUP_CONCAT(prod_ids) as prod_ids, ${weight} as \`weight\` FROM \`phukiendhqg\`.\`product_search_index\` WHERE \`is_compound\`=${is_compound} AND (${condition}) GROUP BY \`weight\``;
         return sql;
     }
-    let std_search_phrase = removeForeignCharacterSearchPhrase(phrase).toUpperCase();
-    let searchDecompsed = decomposeSearchPhrase(std_search_phrase);
-    let sql_1_weight = this.generateSql(searchDecompsed.ease_match_single_words, "ease", 0, 1);
-    let sql_2_weight = this.generateSql(searchDecompsed.ease_match_compound_words, "ease", 1, 2);
-    let sql_3_weight = this.generateSql(searchDecompsed.strict_match_single_words, "strict", 0, 3);
-    let sql_4_weight = this.generateSql(searchDecompsed.strict_match_compound_words, "strict", 1, 4);
-    let sql = [];
-    if(sql_1_weight != null) sql.push(sql_1_weight);
-    if(sql_2_weight != null) sql.push(sql_2_weight);
-    if(sql_3_weight != null) sql.push(sql_3_weight);
-    if(sql_4_weight != null) sql.push(sql_4_weight);
-    if(sql.length < 1) return null;
-    sql = sql.join(" UNION ALL ") + ";";
-    console.log(sql);
-    let result = await msClient.promiseQuery(sql);
-    let found_prods = [];
-    for(let i = 4; i > 0; i--){
-        let row_data = result.find(row => {
-            return row.weight == i;
+    return new Promise(async (resolve, reject) => {
+        let std_search_phrase = removeForeignCharacterSearchPhrase(phrase).toUpperCase();
+        let searchDecompsed = decomposeSearchPhrase(std_search_phrase);
+        let sql_1_weight = this.generateSql({
+            keywords: searchDecompsed.ease_match_single_words,
+            like_mode: "LIKE",
+            is_compound: 0,
+            weight: 1,
+            prefix: "%",
+            postfix: "%"
         });
-        if(row_data && row_data.prod_ids != null && row_data.prod_ids.length > 0){
-            let prod_ids = row_data.prod_ids.split(/,\s*/);
-            prod_ids.forEach(prod_id_item => {
-                let found_match = found_prods.find(found_item => {
-                    return found_item.prod_id == prod_id_item;
-                });
-                // if(!found_match){
-                //     found_prods.push({
-                //         prod_id: prod_id_item,
-                //         weight: i,
-                //         position: 1
-                //     })
-                // }else if(found_match.weight == i){
-                //     found_match.position += 1;
-                // }
-                if(!found_match){
-                    found_prods.push({
-                        prod_id: prod_id_item,
-                        weight: i,
-                        position: Math.pow(i,2)
-                    })
-                    if(prod_id_item == "00100") console.log(prod_id_item, " ", i, " ", Math.pow(i, 2));
-                }else{
-                    found_match.position += Math.pow(i,2);
-                    if(prod_id_item == "00100") console.log(prod_id_item, " ", i, " ", Math.pow(i, 2));
-                }
-            })
+        let sql_2_weight = this.generateSql({
+            keywords: searchDecompsed.ease_match_single_words,
+            like_mode: "LIKE",
+            is_compound: 0,
+            weight: 2,
+            prefix: "",
+            postfix: ""
+        });
+        let sql_3_weight = this.generateSql({
+            keywords: searchDecompsed.ease_match_compound_words,
+            like_mode: "LIKE",
+            is_compound: 1,
+            weight: 3,
+            prefix: "%",
+            postfix: "%"
+        });
+        let sql_4_weight = this.generateSql({
+            keywords: searchDecompsed.strict_match_single_words,
+            like_mode: "LIKE BINARY",
+            is_compound: 0,
+            weight: 4,
+            prefix: "",
+            postfix: ""
+        });
+        let sql_5_weight = this.generateSql({
+            keywords: searchDecompsed.strict_match_compound_words,
+            like_mode: "LIKE BINARY",
+            is_compound: 1,
+            weight: 5,
+            prefix: "",
+            postfix: ""
+        });
+        let sql = [];
+        if(sql_1_weight != null) sql.push(sql_1_weight);
+        if(sql_2_weight != null) sql.push(sql_2_weight);
+        if(sql_3_weight != null) sql.push(sql_3_weight);
+        if(sql_4_weight != null) sql.push(sql_4_weight);
+        if(sql_5_weight != null) sql.push(sql_5_weight);
+        if(sql.length < 1) return null;
+        sql = sql.join(" UNION ALL ") + ";";
+        let result = await msClient.promiseQuery(sql);
+        let found_prods = [];
+        for(let i = 5; i > 0; i--){
+            let row_data = result.find(row => {
+                return row.weight == i;
+            });
+            if(row_data && row_data.prod_ids != null && row_data.prod_ids.length > 0){
+                let prod_ids = row_data.prod_ids.split(/,\s*/);
+                prod_ids.forEach(prod_id_item => {
+                    let found_match = found_prods.find(found_item => {
+                        return found_item.prod_id == prod_id_item;
+                    });
+                    if(!found_match){
+                        found_prods.push({
+                            prod_id: prod_id_item,
+                            weight: i,
+                            position: Math.pow(i,2)
+                        })
+                    }else{
+                        found_match.position += Math.pow(i,2);
+                    }
+                })
+            }
         }
-    }
-    found_prods.sort((a, b) => {
-        if(a.weight != b.weight) return b.weight - a.weight;
-        return b.position - a.position;
-    });
-    console.log(found_prods);
-    msClient.end();
+        found_prods.sort((a, b) => {
+            if(a.weight != b.weight) return b.weight - a.weight;
+            return b.position - a.position;
+        });
+        let prod_idss = [];
+        found_prods.forEach(prod => {
+            prod_idss.push(prod.prod_id);
+        });
+        console.log("index: ", prod_idss.join());
+        resolve();
+    })
 }
 
-let phrase = "quilian A7 gaming hs headphone  ";
-searchProduct(phrase);
+function searchProductTable (phrase) {
+    this.generateSql = (search_config) => {
+        let {keywords, like_mode, weight, prefix, postfix} = {...search_config};
+        if(!like_mode || !keywords || keywords.length < 1) return null;
+        let sql = [];
+        keywords.forEach(key => {
+            sql.push(`SELECT GROUP_CONCAT(prod_id) as prod_ids, ${weight} as \`weight\` FROM \`phukiendhqg\`.\`product_fultex\` WHERE UPPER(prod_name) ${like_mode} "${prefix}${key}${postfix}" GROUP BY \`weight\``);
+        });
+        sql = sql.join(" UNION ALL ");
+        return sql;
+    }
+    return new Promise(async (resolve, reject) => {
+        let std_search_phrase = phrase.replace(/^\s+|\s+$/g, "").toUpperCase();
+        let searchDecompsed = decomposeSearchPhrase(std_search_phrase);
+        let sql_1_weight = this.generateSql({
+            keywords: searchDecompsed.ease_match_single_words,
+            like_mode: "LIKE",
+            weight: 1,
+            prefix: "%",
+            postfix: "%"
+        });
+        let sql_2_weight = this.generateSql({
+            keywords: searchDecompsed.ease_match_compound_words,
+            like_mode: "LIKE",
+            weight: 2,
+            prefix: "%",
+            postfix: "%"
+        });
+        let sql_3_weight = this.generateSql({
+            keywords: searchDecompsed.strict_match_single_words,
+            like_mode: "LIKE BINARY",
+            weight: 3,
+            prefix: "%",
+            postfix: "%"
+        });
+        let sql_4_weight = this.generateSql({
+            keywords: searchDecompsed.strict_match_compound_words,
+            like_mode: "LIKE BINARY",
+            weight: 4,
+            prefix: "%",
+            postfix: "%"
+        });
+        let sql = [];
+        if(sql_1_weight != null) sql.push(sql_1_weight);
+        if(sql_2_weight != null) sql.push(sql_2_weight);
+        if(sql_3_weight != null) sql.push(sql_3_weight);
+        if(sql_4_weight != null) sql.push(sql_4_weight);
+        if(sql.length < 1) return null;
+        sql = sql.join(" UNION ALL ");
+        sql = `SELECT GROUP_CONCAT(prod_ids) as prod_ids, \`weight\` FROM (${sql}) as \`summary\` GROUP BY \`weight\`;`;
+        let result = await msClient.promiseQuery(sql);
+        let found_prods = [];
+        for(let i = 4; i > 0; i--){
+            let row_data = result.find(row => {
+                return row.weight == i;
+            });
+            if(row_data && row_data.prod_ids != null && row_data.prod_ids.length > 0){
+                let prod_ids = row_data.prod_ids.split(/,\s*/);
+                prod_ids.forEach(prod_id_item => {
+                    let found_match = found_prods.find(found_item => {
+                        return found_item.prod_id == prod_id_item;
+                    });
+                    if(!found_match){
+                        found_prods.push({
+                            prod_id: prod_id_item,
+                            weight: i,
+                            position: i*10
+                        })
+                    }else{
+                        found_match.position += i*10;
+                    }
+                })
+            }
+        }
+        found_prods.sort((a, b) => {
+            return b.position - a.position;
+        });
+        let prod_idss = [];
+        found_prods.forEach(prod => {
+            prod_idss.push(prod.prod_id);
+        });
+        console.log("table: ", prod_idss.join());
+        resolve();
+    })
+}
+
+// let rune_time = 1000;
+let phrase = "tai nghe bluetooth nhét tai";
+searchProductIndex(phrase);
+// (async () => {
+//     let start = Date.now();
+//     for(let i = 0; i < rune_time; i++){
+//         let result = await searchProductTable(phrase);
+//     };
+//     let end = Date.now();
+//     console.log("total time 1000 Table: ", (end - start)/1000, "s");
+//     msClient.end();
+// })()
+
 // testSearch(msClient);
 
 // copyProduct (msClient);
 // buildProductSearchIndex(msClient);
-
-
