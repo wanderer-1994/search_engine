@@ -1,0 +1,7 @@
+INSERT INTO `ecommerce`.product_category_assignment
+(product_id, category_id, position)
+VALUES
+# General
+('PR001', 'earbud', 0),
+('PR002', 'charge_cable', 0),
+('PR003', 'charge_cable', 10)

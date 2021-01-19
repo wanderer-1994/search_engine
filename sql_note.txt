@@ -1,0 +1,62 @@
+###NOTE
+SHOW INDEX FROM yourDatebaseName.yourTableName WHERE Key_name = 'PRIMARY';
+
+###
+SHOW COLUMNS FROM `product_eav` LIKE 'html_type'
+
+###
+ALTER TABLE `ecommerce`.`product_eav_option` 
+CHANGE COLUMN `value` `value` VARCHAR(25) NOT NULL ;
+
+###
+SELECT `pre`.*, `eav`. frontend_input, `eav`. attribute_code, `eav`. frontend_label FROM (
+    SELECT IF(`splk`.parent_id IS NOT NULL, `splk`.parent_id, `p`.entity_id) as product_id, `p`.entity_id, `p`.sku, `p`.type_id, `varchar`.attribute_id, `varchar`.value
+	FROM `catalog_product_entity` as `p`
+	LEFT JOIN `catalog_product_super_link` as `splk` ON `splk`.product_id = `p`.entity_id
+	INNER JOIN `catalog_product_entity_varchar` as `varchar` ON `varchar`.entity_id = `p`.entity_id
+	WHERE `p`.entity_id IN (1,2,3)
+  UNION
+    SELECT IF(`splk`.parent_id IS NOT NULL, `splk`.parent_id, `p`.entity_id) as product_id, `p`.entity_id, `p`.sku, `p`.type_id, `text`.attribute_id, `text`.value
+	FROM `catalog_product_entity` as `p`
+	LEFT JOIN `catalog_product_super_link` as `splk` ON `splk`.product_id = `p`.entity_id
+	INNER JOIN `catalog_product_entity_text` as `text` ON `text`.entity_id = `p`.entity_id
+	WHERE `p`.entity_id IN (1,2,3)
+  UNION
+    SELECT IF(`splk`.parent_id IS NOT NULL, `splk`.parent_id, `p`.entity_id) as product_id, `p`.entity_id, `p`.sku, `p`.type_id, `int`.attribute_id, `int`.value
+	FROM `catalog_product_entity` as `p`
+	LEFT JOIN `catalog_product_super_link` as `splk` ON `splk`.product_id = `p`.entity_id
+	INNER JOIN `catalog_product_entity_int` as `int` ON `int`.entity_id = `p`.entity_id
+	WHERE `p`.entity_id IN (1,2,3)
+  UNION
+    SELECT IF(`splk`.parent_id IS NOT NULL, `splk`.parent_id, `p`.entity_id) as product_id, `p`.entity_id, `p`.sku, `p`.type_id, `decimal`.attribute_id, `decimal`.value
+	FROM `catalog_product_entity` as `p`
+	LEFT JOIN `catalog_product_super_link` as `splk` ON `splk`.product_id = `p`.entity_id
+	INNER JOIN `catalog_product_entity_decimal` as `decimal` ON `decimal`.entity_id = `p`.entity_id
+	WHERE `p`.entity_id IN (1,2,3)
+  UNION
+    SELECT IF(`splk`.parent_id IS NOT NULL, `splk`.parent_id, `p`.entity_id) as product_id, `p`.entity_id, `p`.sku, `p`.type_id, `datetime`.attribute_id, `datetime`.value
+	FROM `catalog_product_entity` as `p`
+	LEFT JOIN `catalog_product_super_link` as `splk` ON `splk`.product_id = `p`.entity_id
+	INNER JOIN `catalog_product_entity_datetime` as `datetime` ON `datetime`.entity_id = `p`.entity_id
+	WHERE `p`.entity_id IN (1,2,3)
+) AS `pre`
+INNER JOIN `eav_attribute` as `eav` ON `pre`.attribute_id=`eav`.attribute_id ORDER BY `pre`.entity_id ASC
+
+###
+SELECT `pre`.*, `ea`.attribute_code FROM (
+SELECT `cce`.entity_id, `cce`.path, `varchar`.attribute_id, `varchar`.value FROM `catalog_category_entity` as `cce`
+INNER JOIN `catalog_category_entity_varchar` as `varchar` ON `varchar`.entity_id=`cce`.entity_id
+UNION
+SELECT `cce`.entity_id, `cce`.path, `text`.attribute_id, `text`.value FROM `catalog_category_entity` as `cce`
+INNER JOIN `catalog_category_entity_text` as `text` ON `text`.entity_id=`cce`.entity_id
+UNION
+SELECT `cce`.entity_id, `cce`.path, `int`.attribute_id, `int`.value FROM `catalog_category_entity` as `cce`
+INNER JOIN `catalog_category_entity_int` as `int` ON `int`.entity_id=`cce`.entity_id
+UNION
+SELECT `cce`.entity_id, `cce`.path, `decimal`.attribute_id, `decimal`.value FROM `catalog_category_entity` as `cce`
+INNER JOIN `catalog_category_entity_decimal` as `decimal` ON `decimal`.entity_id=`cce`.entity_id
+UNION
+SELECT `cce`.entity_id, `cce`.path, `datetime`.attribute_id, `datetime`.value FROM `catalog_category_entity` as `cce`
+INNER JOIN `catalog_category_entity_datetime` as `datetime` ON `datetime`.entity_id=`cce`.entity_id
+) as `pre`
+LEFT JOIN `eav_attribute` as `ea` ON  `ea`.attribute_id=`pre`.attribute_id ORDER BY `pre`.entity_id, `ea`.attribute_code

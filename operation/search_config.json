@@ -1,0 +1,21 @@
+{
+    "categories": ["earbud", "charge_cable"],
+    "entity_ids": ["PR001", "PR003"],
+    "refinements": [{
+        "attribute_id": "length",
+        "value": [1.2]
+    },
+    {
+        "attribute_id": "color",
+        "value": ["Đỏ_#eb3458", "Lam_#eb3458"]
+    },
+    {
+        "attribute_id": "impedance",
+        "value": [32, 17.5]
+    }],
+    "searchPhrase": "Tai earbud true wireless",
+    "searchDictionary": {
+        "synonyms": [["SẠC DỰ PHÒNG", "POWERBANK", "PIN DỰ PHÒNG"], ["CÁP SẠC", "DÂY SẠC"], ["IPHONE", "LIGHTNING"], ["ANDROID", "SAMSUNG"]]
+    },
+    "page": 2
+}

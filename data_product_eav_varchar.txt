@@ -1,0 +1,15 @@
+INSERT INTO `ecommerce`.product_eav_varchar
+(attribute_id, entity_id, value)
+VALUES
+# General
+('name', 'PR001', 'Earbud &copy; Skull Candy'),
+('name', 'PR002', 'Earbud true wireless &copy; Skull Candy'),
+('name', 'PR003', 'Earbud true wireless &copy; Skull Candy đỏ'),
+('name', 'PR004', 'Earbud true wireless &copy; Skull Candy lam'),
+('name', 'PR005', 'Earbud true wireless &copy; Skull Candy cam'),
+('brand', 'PR001', 'Skull Candy'),
+('brand', 'PR002', 'Skull Candy'),
+('color', 'PR003', 'Đỏ_#eb3458'),
+('color', 'PR004', 'Lam_#eb3458'),
+('color', 'PR005', 'Cam_#ebb434'),
+('thumbnail', 'PR001', 'images/thumb/PR001.jpg')

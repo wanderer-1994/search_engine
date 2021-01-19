@@ -1,0 +1,11 @@
+INSERT INTO `ecommerce`.category_entity (entity_id, name, parent, is_online) VALUES
+('wired_earbud', 'Tai nghe dây', 'earbud', '1'),
+('sound_accessory', 'Âm thanh', null, '1'),
+('earbud', 'Tai nghe nhét tai', 'sound_accessory', '1'),
+('wireless_earbud', 'Tai nghe bluetooth', 'earbud', '1'),
+('headphone', 'Headphone', 'sound_accessory', '1'),
+('powerbank', 'Sạc dự phòng', 'charge_accessory', '1'),
+('charge_cable', 'Cáp sạc', 'charge_accessory', '1'),
+('power_port', 'Củ sạc', 'charge_accessory', '1'),
+('charge_accessory', 'Phụ kiện sạc', null, '1'),
+('3rd_level', 'Third level', 'wired_earbud', '1')

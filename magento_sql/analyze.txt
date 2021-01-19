@@ -1,0 +1,61 @@
+SELECT `main_select`.`entity_id`, SUM(score) AS `relevance` 
+FROM (
+    SELECT DISTINCT  `search_index`.`entity_id`, (((0) + (0) + (0) + (0) + (0) + (0)) * 1) AS `score`
+    FROM `catalog_product_index_eav` AS `search_index`
+    INNER JOIN `cataloginventory_stock_status` AS `stock_index`
+        ON stock_index.product_id = search_index.entity_id 
+            AND `stock_index`.`website_id` = 0 
+            AND `stock_index`.`stock_status` = 1 
+            AND `stock_index`.`stock_id` = 1
+    INNER JOIN `catalog_product_index_eav` AS `color_filter` 
+        ON `search_index`.`entity_id` = `color_filter`.`entity_id` 
+            AND `color_filter`.`attribute_id` = 93 
+            AND `color_filter`.`store_id` = 1
+    INNER JOIN `catalog_product_index_eav` AS `material_filter` 
+        ON `search_index`.`entity_id` = `material_filter`.`entity_id` 
+            AND `material_filter`.`attribute_id` = 138 
+            AND `material_filter`.`store_id` = 1
+    INNER JOIN `catalog_product_index_eav` AS `size_filter` 
+        ON `search_index`.`entity_id` = `size_filter`.`entity_id` 
+            AND `size_filter`.`attribute_id` = 143 
+            AND `size_filter`.`store_id` = 1
+    INNER JOIN `catalog_product_index_eav` AS `style_general_filter` 
+        ON `search_index`.`entity_id` = `style_general_filter`.`entity_id` 
+            AND `style_general_filter`.`attribute_id` = 151 
+            AND `style_general_filter`.`store_id` = 1
+    INNER JOIN `cataloginventory_stock_status` AS `color_filter_stock_index` 
+        ON color_filter_stock_index.product_id = color_filter.source_id 
+            AND `color_filter_stock_index`.`website_id` = 0 
+            AND `color_filter_stock_index`.`stock_status` = 1 
+            AND `color_filter_stock_index`.`stock_id` = 1
+    INNER JOIN `cataloginventory_stock_status` AS `material_filter_stock_index` 
+        ON material_filter_stock_index.product_id = material_filter.source_id 
+            AND `material_filter_stock_index`.`website_id` = 0 
+            AND `material_filter_stock_index`.`stock_status` = 1 
+            AND `material_filter_stock_index`.`stock_id` = 1
+    INNER JOIN `cataloginventory_stock_status` AS `size_filter_stock_index` 
+        ON size_filter_stock_index.product_id = size_filter.source_id 
+            AND `size_filter_stock_index`.`website_id` = 0 
+            AND `size_filter_stock_index`.`stock_status` = 1 
+            AND `size_filter_stock_index`.`stock_id` = 1
+    INNER JOIN `cataloginventory_stock_status` AS `style_general_filter_stock_index` 
+        ON style_general_filter_stock_index.product_id = style_general_filter.source_id 
+            AND `style_general_filter_stock_index`.`website_id` = 0 
+            AND `style_general_filter_stock_index`.`stock_status` = 1 
+            AND `style_general_filter_stock_index`.`stock_id` = 1
+    INNER JOIN `catalog_product_index_eav` AS `visibility_filter` 
+        ON search_index.entity_id = visibility_filter.entity_id 
+            AND `visibility_filter`.`attribute_id` = 99 
+            AND `visibility_filter`.`value` in ('2', '4') 
+            AND `visibility_filter`.`store_id` = '1'
+    INNER JOIN `catalog_category_product_index_store1` AS `category_ids_index` 
+        ON search_index.entity_id = category_ids_index.product_id 
+            AND category_ids_index.store_id = '1' 
+    WHERE (search_index.store_id = '1') 
+        AND (category_ids_index.category_id in ('23')) 
+        AND (color_filter.value = '58') 
+        AND (material_filter.value = '38') 
+        AND (size_filter.value = '169') 
+        AND (style_general_filter.value = '117')) AS `main_select` 
+    GROUP BY `entity_id` ORDER BY `relevance` DESC, `entity_id` DESC
+    LIMIT 10000

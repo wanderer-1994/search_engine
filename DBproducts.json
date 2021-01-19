@@ -1,0 +1,538 @@
+[
+    {
+        "product_id": "PR001",
+        "type_id": "simple",
+        "self": {
+            "entity_id": "PR001",
+            "product_id": "PR001",
+            "type_id": "simple",
+            "attributes": [
+                {
+                    "attribute_id": "capacity",
+                    "value": "25000",
+                    "label": "Dung lượng",
+                    "html_type": "input",
+                    "data_type": "int",
+                    "is_super": "1",
+                    "is_system": "1",
+                    "unit": "mAh"
+                },
+                {
+                    "attribute_id": "frequency",
+                    "value": "20000",
+                    "label": "Tần số",
+                    "html_type": "input",
+                    "data_type": "int",
+                    "is_super": "1",
+                    "is_system": "1",
+                    "unit": "Hz"
+                },
+                {
+                    "attribute_id": "is_quick_charge",
+                    "value": "0",
+                    "label": "Hỗ trợ sạc nhanh",
+                    "html_type": "input",
+                    "data_type": "boolean",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "price",
+                    "value": "30000",
+                    "label": "Giá",
+                    "html_type": "input",
+                    "data_type": "int",
+                    "is_super": "1",
+                    "is_system": "1",
+                    "unit": "vnd"
+                },
+                {
+                    "attribute_id": "universal_use",
+                    "value": "1",
+                    "label": "Đa dụng",
+                    "html_type": "input",
+                    "data_type": "boolean",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "visible",
+                    "value": "1",
+                    "label": "Visible",
+                    "html_type": "input",
+                    "data_type": "boolean",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "weight",
+                    "value": "235",
+                    "label": "Trọng lượng",
+                    "html_type": "input",
+                    "data_type": "int",
+                    "is_super": "1",
+                    "is_system": "1",
+                    "unit": "gr"
+                },
+                {
+                    "attribute_id": "brand",
+                    "value": "Skull Candy",
+                    "label": "Thương hiệu",
+                    "html_type": "select",
+                    "data_type": "varchar",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "thumbnail",
+                    "value": "images/thumb/PR001.jpg",
+                    "label": "Thumbnail",
+                    "html_type": "input",
+                    "data_type": "varchar",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "compatible",
+                    "value": [
+                        "IPhone"
+                    ],
+                    "label": "Tương thích",
+                    "html_type": "multiselect",
+                    "data_type": "varchar",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "images",
+                    "value": [
+                        "images/gallery/PR001-1.jpg",
+                        "images/gallery/PR001-2.jpg",
+                        "images/gallery/PR001-3.jpg"
+                    ],
+                    "label": "Hình sản phẩm",
+                    "html_type": "multiinput",
+                    "data_type": "varchar",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "timbre",
+                    "value": [
+                        "Treble",
+                        "Mid"
+                    ],
+                    "label": "Âm sắc",
+                    "html_type": "multiselect",
+                    "data_type": "varchar",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "jack_type",
+                    "value": [
+                        "Lightning"
+                    ],
+                    "label": "Jack",
+                    "html_type": "multiselect",
+                    "data_type": "varchar",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "material",
+                    "value": [
+                        "silicon",
+                        "Dây dù"
+                    ],
+                    "label": "Vật liệu",
+                    "html_type": "multiselect",
+                    "data_type": "varchar",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "spec_description",
+                    "value": "<div style=\"white-space: pre-wrap;\" class=\"myclass\">Thời gian giao hàng dự kiến cho sản phẩm này là từ 7-9 ngày\r\n\r\n    Thông tin chi tiết sản phẩm:\r\n    Tình trạng sản phẩm: Hàng mới 100%\r\n    Ngày sản xuất: Mới sản xuất (trong vòng 2 tuần)\r\n    Lưu ý: \r\n    Cáp sạc nhanh 5A có thể tăng hơn 90% tốc độ sạc của điện thoại di động\r\n    Nếu điện thoại của bạn không hỗ trợ chế độ \"Super Charge\", cáp sạc có thể tăng tốc độ sạc của điện thoại, nhưng không thể đạt tốc độ 5A tuy nhiên vẫn nhanh hơn hầu hết các cáp tốc độ sạc\r\n    Màu sắc: đen, đỏ, xanh dương\r\n    Phân loại: Cổng C / Micro USB/ Lightning\r\n    Chiều dài: 1 mét\r\n    Đầu ra: 5V / 5.0A (tối đa)\r\n    Tính năng sản phẩm:\r\n    1. Thiết kế giúp bạn trải nghiệm cách sạc điện thoại hiệu quả nhất\r\n    2. Siêu bền\r\n    Cổng kim loại + lưới dệt giúp sản phẩm sử dụng bền, chống xoắn và rối.\r\n    3. Sạc dễ dàng: Giắc cắm có thể tách ra khỏi cáp. Giắc cắm có thể được gắn trong điện thoại. Kết nối nhanh chóng, chỉ mất 1 giây.\r\n    4. Hỗ trợ sạc nhanh\r\n    Giúp bạn trải nghiệm sạc nhanh cho điện thoại\r\n    \r\n    #cable #iphonecable #type-cable #huaweicable #samsungcable #microusb #huaweip20procable #samsungs10cable #fastcharger #usbcable\r\n</div>",
+                    "label": "Thông số kỹ thuật",
+                    "html_type": "input",
+                    "data_type": "html",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "short_description",
+                    "value": "PR001 is a great earbud for outside exercise. It's light weight and having sporty outlook",
+                    "label": "Sơ tả",
+                    "html_type": "input",
+                    "data_type": "text",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "impedance",
+                    "value": "32.000000",
+                    "label": "Trở kháng",
+                    "html_type": "input",
+                    "data_type": "decimal",
+                    "is_super": "1",
+                    "is_system": "1",
+                    "unit": "ohm"
+                },
+                {
+                    "attribute_id": "length",
+                    "value": "1.200000",
+                    "label": "Chiều dài",
+                    "html_type": "input",
+                    "data_type": "decimal",
+                    "is_super": "1",
+                    "is_system": "1",
+                    "unit": "m"
+                },
+                {
+                    "attribute_id": "name",
+                    "value": "Earbud &copy; Skull Candy",
+                    "label": "Tên",
+                    "html_type": "input",
+                    "data_type": "varchar",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "description",
+                    "value": "PR001 is a great earbud for outside exercise. It's light weight and having sporty outlook",
+                    "label": "Mô tả",
+                    "html_type": "input",
+                    "data_type": "text",
+                    "is_super": "1",
+                    "is_system": "1"
+                }
+            ]
+        }
+    },
+    {
+        "product_id": "PR002",
+        "type_id": "master",
+        "parent": {
+            "entity_id": "PR002",
+            "product_id": "PR002",
+            "type_id": "master",
+            "attributes": [
+                {
+                    "attribute_id": "capacity",
+                    "value": "35000",
+                    "label": "Dung lượng",
+                    "html_type": "input",
+                    "data_type": "int",
+                    "is_super": "1",
+                    "is_system": "1",
+                    "unit": "mAh"
+                },
+                {
+                    "attribute_id": "frequency",
+                    "value": "22000",
+                    "label": "Tần số",
+                    "html_type": "input",
+                    "data_type": "int",
+                    "is_super": "1",
+                    "is_system": "1",
+                    "unit": "Hz"
+                },
+                {
+                    "attribute_id": "is_quick_charge",
+                    "value": "1",
+                    "label": "Hỗ trợ sạc nhanh",
+                    "html_type": "input",
+                    "data_type": "boolean",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "price",
+                    "value": "22000",
+                    "label": "Giá",
+                    "html_type": "input",
+                    "data_type": "int",
+                    "is_super": "1",
+                    "is_system": "1",
+                    "unit": "vnd"
+                },
+                {
+                    "attribute_id": "universal_use",
+                    "value": "0",
+                    "label": "Đa dụng",
+                    "html_type": "input",
+                    "data_type": "boolean",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "visible",
+                    "value": "1",
+                    "label": "Visible",
+                    "html_type": "input",
+                    "data_type": "boolean",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "weight",
+                    "value": "195",
+                    "label": "Trọng lượng",
+                    "html_type": "input",
+                    "data_type": "int",
+                    "is_super": "1",
+                    "is_system": "1",
+                    "unit": "gr"
+                },
+                {
+                    "attribute_id": "brand",
+                    "value": "Skull Candy",
+                    "label": "Thương hiệu",
+                    "html_type": "select",
+                    "data_type": "varchar",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "description",
+                    "value": "PR002 is \"just\" the right <sup>&copy;</sup>Skullcandy",
+                    "label": "Mô tả",
+                    "html_type": "input",
+                    "data_type": "text",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "impedance",
+                    "value": "17.500000",
+                    "label": "Trở kháng",
+                    "html_type": "input",
+                    "data_type": "decimal",
+                    "is_super": "1",
+                    "is_system": "1",
+                    "unit": "ohm"
+                },
+                {
+                    "attribute_id": "name",
+                    "value": "Earbud true wireless &copy; Skull Candy",
+                    "label": "Tên",
+                    "html_type": "input",
+                    "data_type": "varchar",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "length",
+                    "value": "2.000000",
+                    "label": "Chiều dài",
+                    "html_type": "input",
+                    "data_type": "decimal",
+                    "is_super": "1",
+                    "is_system": "1",
+                    "unit": "m"
+                },
+                {
+                    "attribute_id": "compatible",
+                    "value": [
+                        "Samsung",
+                        "IPhone"
+                    ],
+                    "label": "Tương thích",
+                    "html_type": "multiselect",
+                    "data_type": "varchar",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "timbre",
+                    "value": [
+                        "Mid",
+                        "Bass"
+                    ],
+                    "label": "Âm sắc",
+                    "html_type": "multiselect",
+                    "data_type": "varchar",
+                    "is_super": "1",
+                    "is_system": "1"
+                },
+                {
+                    "attribute_id": "jack_type",
+                    "value": [
+                        "Type C",
+                        "Micro USB"
+                    ],
+                    "label": "Jack",
+                    "html_type": "multiselect",
+                    "data_type": "varchar",
+                    "is_super": "1",
+                    "is_system": "1"
+                }
+            ]
+        },
+        "variants": [
+            {
+                "entity_id": "PR003",
+                "product_id": "PR002",
+                "type_id": "variant",
+                "attributes": [
+                    {
+                        "attribute_id": "price",
+                        "value": "230000",
+                        "label": "Giá",
+                        "html_type": "input",
+                        "data_type": "int",
+                        "is_super": "1",
+                        "is_system": "1",
+                        "unit": "vnd"
+                    },
+                    {
+                        "attribute_id": "color",
+                        "value": "Đỏ_#eb3458",
+                        "label": "Màu",
+                        "html_type": "select",
+                        "data_type": "varchar",
+                        "is_super": "1",
+                        "is_system": "1"
+                    },
+                    {
+                        "attribute_id": "name",
+                        "value": "Earbud true wireless &copy; Skull Candy đỏ",
+                        "label": "Tên",
+                        "html_type": "input",
+                        "data_type": "varchar",
+                        "is_super": "1",
+                        "is_system": "1"
+                    },
+                    {
+                        "attribute_id": "images",
+                        "value": [
+                            "images/gallery/PR003-1.jpg",
+                            "images/gallery/PR003-2.jpg",
+                            "images/gallery/PR003-3.jpg"
+                        ],
+                        "label": "Hình sản phẩm",
+                        "html_type": "multiinput",
+                        "data_type": "varchar",
+                        "is_super": "1",
+                        "is_system": "1"
+                    }
+                ]
+            },
+            {
+                "entity_id": "PR004",
+                "product_id": "PR002",
+                "type_id": "variant",
+                "attributes": [
+                    {
+                        "attribute_id": "price",
+                        "value": "24000",
+                        "label": "Giá",
+                        "html_type": "input",
+                        "data_type": "int",
+                        "is_super": "1",
+                        "is_system": "1",
+                        "unit": "vnd"
+                    },
+                    {
+                        "attribute_id": "name",
+                        "value": "Earbud true wireless &copy; Skull Candy lam",
+                        "label": "Tên",
+                        "html_type": "input",
+                        "data_type": "varchar",
+                        "is_super": "1",
+                        "is_system": "1"
+                    },
+                    {
+                        "attribute_id": "color",
+                        "value": "Lam_#eb3458",
+                        "label": "Màu",
+                        "html_type": "select",
+                        "data_type": "varchar",
+                        "is_super": "1",
+                        "is_system": "1"
+                    },
+                    {
+                        "attribute_id": "visible",
+                        "value": "1",
+                        "label": "Visible",
+                        "html_type": "input",
+                        "data_type": "boolean",
+                        "is_super": "1",
+                        "is_system": "1"
+                    },
+                    {
+                        "attribute_id": "images",
+                        "value": [
+                            "images/gallery/PR004-1.jpg",
+                            "images/gallery/PR004-2.jpg",
+                            "images/gallery/PR004-3.jpg"
+                        ],
+                        "label": "Hình sản phẩm",
+                        "html_type": "multiinput",
+                        "data_type": "varchar",
+                        "is_super": "1",
+                        "is_system": "1"
+                    }
+                ]
+            },
+            {
+                "entity_id": "PR005",
+                "product_id": "PR002",
+                "type_id": "variant",
+                "attributes": [
+                    {
+                        "attribute_id": "color",
+                        "value": "Cam_#ebb434",
+                        "label": "Màu",
+                        "html_type": "select",
+                        "data_type": "varchar",
+                        "is_super": "1",
+                        "is_system": "1"
+                    },
+                    {
+                        "attribute_id": "name",
+                        "value": "Earbud true wireless &copy; Skull Candy cam",
+                        "label": "Tên",
+                        "html_type": "input",
+                        "data_type": "varchar",
+                        "is_super": "1",
+                        "is_system": "1"
+                    },
+                    {
+                        "attribute_id": "visible",
+                        "value": "0",
+                        "label": "Visible",
+                        "html_type": "input",
+                        "data_type": "boolean",
+                        "is_super": "1",
+                        "is_system": "1"
+                    },
+                    {
+                        "attribute_id": "price",
+                        "value": "25000",
+                        "label": "Giá",
+                        "html_type": "input",
+                        "data_type": "int",
+                        "is_super": "1",
+                        "is_system": "1",
+                        "unit": "vnd"
+                    },
+                    {
+                        "attribute_id": "images",
+                        "value": [
+                            "images/gallery/PR005-1.jpg",
+                            "images/gallery/PR005-2.jpg",
+                            "images/gallery/PR005-3.jpg"
+                        ],
+                        "label": "Hình sản phẩm",
+                        "html_type": "multiinput",
+                        "data_type": "varchar",
+                        "is_super": "1",
+                        "is_system": "1"
+                    }
+                ]
+            }
+        ]
+    }
+]

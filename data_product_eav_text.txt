@@ -1,0 +1,30 @@
+INSERT INTO `ecommerce`.product_eav_text
+(attribute_id, entity_id, value)
+VALUES
+# General
+('description', 'PR001', 'PR001 is a great earbud for outside exercise. It\'s light weight and having sporty outlook'),
+('description', 'PR002', 'PR002 is \"just\" the right <sup>&copy;</sup>Skullcandy'),
+('short_description', 'PR001', 'PR001 is a great earbud for outside exercise. It\'s light weight and having sporty outlook'),
+# Sạc dự phòng
+('spec_description', 'PR001', '<div style=\"white-space: pre-wrap;\" class=\"myclass\">Thời gian giao hàng dự kiến cho sản phẩm này là từ 7-9 ngày
+
+    Thông tin chi tiết sản phẩm:
+    Tình trạng sản phẩm: Hàng mới 100%
+    Ngày sản xuất: Mới sản xuất (trong vòng 2 tuần)
+    Lưu ý: 
+    Cáp sạc nhanh 5A có thể tăng hơn 90% tốc độ sạc của điện thoại di động
+    Nếu điện thoại của bạn không hỗ trợ chế độ "Super Charge", cáp sạc có thể tăng tốc độ sạc của điện thoại, nhưng không thể đạt tốc độ 5A tuy nhiên vẫn nhanh hơn hầu hết các cáp tốc độ sạc
+    Màu sắc: đen, đỏ, xanh dương
+    Phân loại: Cổng C / Micro USB/ Lightning
+    Chiều dài: 1 mét
+    Đầu ra: 5V / 5.0A (tối đa)
+    Tính năng sản phẩm:
+    1. Thiết kế giúp bạn trải nghiệm cách sạc điện thoại hiệu quả nhất
+    2. Siêu bền
+    Cổng kim loại + lưới dệt giúp sản phẩm sử dụng bền, chống xoắn và rối.
+    3. Sạc dễ dàng: Giắc cắm có thể tách ra khỏi cáp. Giắc cắm có thể được gắn trong điện thoại. Kết nối nhanh chóng, chỉ mất 1 giây.
+    4. Hỗ trợ sạc nhanh
+    Giúp bạn trải nghiệm sạc nhanh cho điện thoại
+    
+    #cable #iphonecable #type-cable #huaweicable #samsungcable #microusb #huaweip20procable #samsungs10cable #fastcharger #usbcable
+</div>')

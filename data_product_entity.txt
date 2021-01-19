@@ -1,0 +1,6 @@
+INSERT INTO `ecommerce`.product_entity (entity_id, type_id, parent, created_at, updated_at) VALUES
+('PR001', 'simple', null, null, null),
+('PR002', 'master', null, null, null),
+('PR003', 'variant', 'PR002', null, null),
+('PR004', 'variant', 'PR002', null, null),
+('PR005', 'variant', 'PR002', null, null)

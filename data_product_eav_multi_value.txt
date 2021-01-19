@@ -1,0 +1,30 @@
+INSERT INTO `ecommerce`.product_eav_multi_value
+(attribute_id, entity_id, value)
+VALUES
+# General
+('compatible', 'PR001', 'IPhone'),
+('compatible', 'PR002', 'Samsung'),
+('compatible', 'PR002', 'IPhone'),
+('images', 'PR001', 'images/gallery/PR001-1.jpg'),
+('images', 'PR001', 'images/gallery/PR001-2.jpg'),
+('images', 'PR001', 'images/gallery/PR001-3.jpg'),
+('images', 'PR003', 'images/gallery/PR003-1.jpg'),
+('images', 'PR003', 'images/gallery/PR003-2.jpg'),
+('images', 'PR003', 'images/gallery/PR003-3.jpg'),
+('images', 'PR004', 'images/gallery/PR004-1.jpg'),
+('images', 'PR004', 'images/gallery/PR004-2.jpg'),
+('images', 'PR004', 'images/gallery/PR004-3.jpg'),
+('images', 'PR005', 'images/gallery/PR005-1.jpg'),
+('images', 'PR005', 'images/gallery/PR005-2.jpg'),
+('images', 'PR005', 'images/gallery/PR005-3.jpg'),
+# Tai nghe
+('timbre', 'PR001', 'Treble'),
+('timbre', 'PR001', 'Mid'),
+('timbre', 'PR002', 'Mid'),
+('timbre', 'PR002', 'Bass'),
+('jack_type', 'PR001', 'Lightning'),
+('jack_type', 'PR002', 'Type C'),
+('jack_type', 'PR002', 'Micro USB'),
+# Cáp sạc
+('material', 'PR001', 'silicon'),
+('material', 'PR001', 'Dây dù')

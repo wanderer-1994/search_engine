@@ -1,0 +1,4003 @@
+## 2021-01-12 17:55:49
+## 9248 ## CONNECT
+TIME: 0.0012
+
+
+
+## 2021-01-12 17:55:49
+## 9248 ## QUERY
+SQL: SET NAMES utf8
+
+
+
+
+## 2021-01-12 17:55:49
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `core_config_data` AS `main_table`
+
+
+
+
+## 2021-01-12 17:55:49
+## 9248 ## QUERY
+SQL: SELECT `store_website`.* FROM `store_website`
+
+
+
+
+## 2021-01-12 17:55:49
+## 9248 ## QUERY
+SQL: SELECT `store_group`.* FROM `store_group`
+
+
+
+
+## 2021-01-12 17:55:49
+## 9248 ## QUERY
+SQL: SELECT `store`.* FROM `store`
+
+
+
+
+## 2021-01-12 17:55:49
+## 9248 ## QUERY
+SQL: SELECT `store`.* FROM `store`
+
+
+
+
+## 2021-01-12 17:55:49
+## 9248 ## QUERY
+SQL: SELECT `store_website`.* FROM `store_website`
+
+
+
+
+## 2021-01-12 17:55:49
+## 9248 ## QUERY
+SQL: SHOW TABLE STATUS LIKE 'setup_module'
+
+
+
+
+## 2021-01-12 17:55:49
+## 9248 ## QUERY
+SQL: SELECT `setup_module`.* FROM `setup_module`
+
+
+
+
+## 2021-01-12 17:55:49
+## 9248 ## QUERY
+SQL: SELECT `flag`.* FROM `flag` WHERE (`flag`.`flag_code`='config_hash')
+
+
+
+
+## 2021-01-12 17:55:49
+## 9248 ## QUERY
+SQL: SELECT `url_rewrite`.* FROM `url_rewrite` WHERE (`request_path` IN ('argus-all-weather-tank.html', 'argus-all-weather-tank.html/')) AND (`store_id` IN ('1'))
+
+
+
+
+## 2021-01-12 17:55:50
+## 9248 ## QUERY
+SQL: SELECT `translation`.`string`, `translation`.`translate`, `translation`.`store_id`, `translation`.`locale` FROM `translation` ORDER BY `store_id` ASC
+
+
+
+
+
+## 2021-01-12 17:55:50
+## 9248 ## QUERY
+SQL: SELECT `translation`.`string`, `translation`.`translate` FROM `translation` WHERE (store_id IN (0 , :store_id)) AND (locale = :locale) ORDER BY `store_id` ASC
+
+BIND: array (
+  ':locale' => 'en_US',
+  ':store_id' => '1',
+)
+
+
+
+
+## 2021-01-12 17:55:50
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `eav_entity_type` AS `main_table`
+
+
+
+
+## 2021-01-12 17:55:50
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `store` AS `main_table` WHERE (`main_table`.`group_id` IN('1')) AND (`main_table`.`store_id` > 0) ORDER BY CASE WHEN main_table.store_id = 0 THEN 0 ELSE 1 END ASC, main_table.sort_order ASC, main_table.name ASC
+
+
+
+
+
+## 2021-01-12 17:55:50
+## 9248 ## QUERY
+SQL: SELECT `url_rewrite`.* FROM `url_rewrite` WHERE (`request_path` IN ('catalog/product/view/id/2694', 'catalog/product/view/id/2694/')) AND (`store_id` IN ('1'))
+
+
+
+
+## 2021-01-12 17:55:50
+## 9248 ## QUERY
+SQL: SELECT `url_rewrite`.*, `relation`.`category_id`, `relation`.`product_id` FROM `url_rewrite`
+ LEFT JOIN `catalog_url_rewrite_product_category` AS `relation` ON url_rewrite.url_rewrite_id = relation.url_rewrite_id WHERE (url_rewrite.request_path IN ('catalog/product/view/id/2694', 'catalog/product/view/id/2694/')) AND (url_rewrite.store_id IN ('1')) AND (relation.category_id IS NULL)
+
+
+
+
+## 2021-01-12 17:55:50
+## 9248 ## QUERY
+SQL: SHOW INDEX FROM `catalog_product_entity`
+
+
+
+
+## 2021-01-12 17:55:50
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.* FROM `catalog_product_entity` WHERE (entity_id =2694)
+
+
+
+
+## 2021-01-12 17:55:50
+## 9248 ## QUERY
+SQL: DESCRIBE `eav_attribute`
+
+
+
+
+## 2021-01-12 17:55:50
+## 9248 ## QUERY
+SQL: SELECT `main_table`.`entity_type_id`, `main_table`.`attribute_code`, `main_table`.`attribute_model`, `main_table`.`backend_model`, `main_table`.`backend_type`, `main_table`.`backend_table`, `main_table`.`frontend_model`, `main_table`.`frontend_input`, `main_table`.`frontend_label`, `main_table`.`frontend_class`, `main_table`.`source_model`, `main_table`.`is_required`, `main_table`.`is_user_defined`, `main_table`.`default_value`, `main_table`.`is_unique`, `main_table`.`note`, `additional_table`.*, `entity_attribute`.*, IFNULL(al.value, main_table.frontend_label) AS `store_label` FROM `eav_attribute` AS `main_table`
+ INNER JOIN `catalog_eav_attribute` AS `additional_table` ON additional_table.attribute_id = main_table.attribute_id
+ INNER JOIN `eav_entity_attribute` AS `entity_attribute` ON entity_attribute.attribute_id = main_table.attribute_id
+ LEFT JOIN `eav_attribute_label` AS `al` ON al.attribute_id = main_table.attribute_id AND al.store_id = 1 WHERE (main_table.entity_type_id = 4) AND (`entity_attribute`.`attribute_set_id` = '9') ORDER BY entity_attribute.sort_order ASC
+
+
+
+
+
+## 2021-01-12 17:55:50
+## 9248 ## QUERY
+SQL: SELECT `t`.* FROM `catalog_product_entity` AS `t` WHERE (entity_id = 2694)
+
+
+
+
+## 2021-01-12 17:55:50
+## 9248 ## QUERY
+SQL: SELECT `u`.* FROM ( (SELECT `t`.`value`, `t`.`attribute_id`, `t`.`store_id` FROM `catalog_product_entity_varchar` AS `t` WHERE (entity_id = '2694') AND (attribute_id IN ('87', '88', '89', '162', '96', '104', '106', '73', '120', '128', '135', '129', '109', '110', '111', '84', '86', '100', '116', '117', '114', '131', '132', '136', '157', '138', '158', '159', '160', '161')) AND (`store_id` IN ('1', 0)))UNION ALL(SELECT `t`.`value`, `t`.`attribute_id`, `t`.`store_id` FROM `catalog_product_entity_int` AS `t` WHERE (entity_id = '2694') AND (attribute_id IN ('125', '97', '91', '124', '122', '121', '134', '115', '123', '99', '130', '133', '143', '93', '144', '145', '146', '147', '148')) AND (`store_id` IN ('1', 0)))UNION ALL(SELECT `t`.`value`, `t`.`attribute_id`, `t`.`store_id` FROM `catalog_product_entity_decimal` AS `t` WHERE (entity_id = '2694') AND (attribute_id IN ('78', '81', '92', '98', '119', '77', '82')) AND (`store_id` IN ('1', 0)))UNION ALL(SELECT `t`.`value`, `t`.`attribute_id`, `t`.`store_id` FROM `catalog_product_entity_datetime` AS `t` WHERE (entity_id = '2694') AND (attribute_id IN ('79', '80', '101', '102', '94', '95')) AND (`store_id` IN ('1', 0)))UNION ALL(SELECT `t`.`value`, `t`.`attribute_id`, `t`.`store_id` FROM `catalog_product_entity_text` AS `t` WHERE (entity_id = '2694') AND (attribute_id IN ('103', '85', '75', '76')) AND (`store_id` IN ('1', 0))) ) AS `u` ORDER BY `store_id` ASC
+
+
+
+
+
+## 2021-01-12 17:55:50
+## 9248 ## QUERY
+SQL: SELECT `main_table`.*, `default_option_title`.`title` AS `default_title`, `store_option_title`.`title` AS `store_title`, IF(store_option_title.title IS NULL, default_option_title.title, store_option_title.title) AS `title`, `default_option_price`.`price` AS `default_price`, `default_option_price`.`price_type` AS `default_price_type`, `store_option_price`.`price` AS `store_price`, `store_option_price`.`price_type` AS `store_price_type`, IF(store_option_price.price IS NULL, default_option_price.price, store_option_price.price) AS `price`, IF(store_option_price.price_type IS NULL, default_option_price.price_type, store_option_price.price_type) AS `price_type` FROM `catalog_product_option` AS `main_table`
+ INNER JOIN `catalog_product_entity` AS `cpe` ON cpe.entity_id = main_table.product_id
+ INNER JOIN `catalog_product_option_title` AS `default_option_title` ON default_option_title.option_id = main_table.option_id
+ LEFT JOIN `catalog_product_option_title` AS `store_option_title` ON store_option_title.option_id = main_table.option_id AND store_option_title.store_id = 1
+ LEFT JOIN `catalog_product_option_price` AS `default_option_price` ON default_option_price.option_id = main_table.option_id AND default_option_price.store_id = 0
+ LEFT JOIN `catalog_product_option_price` AS `store_option_price` ON store_option_price.option_id = main_table.option_id AND store_option_price.store_id = 1 WHERE (`cpe`.`entity_id` = '2694') AND (default_option_title.store_id = 0) ORDER BY sort_order ASC, title ASC
+
+
+
+
+
+## 2021-01-12 17:55:50
+## 9248 ## QUERY
+SQL: SELECT `main`.`value_id`, `main`.`value` AS `file`, `main`.`media_type`, `entity`.`entity_id`, IFNULL(`value`.`label`, `default_value`.`label`) AS `label`, IFNULL(`value`.`position`, `default_value`.`position`) AS `position`, IFNULL(`value`.`disabled`, `default_value`.`disabled`) AS `disabled`, `default_value`.`label` AS `label_default`, `default_value`.`position` AS `position_default`, `default_value`.`disabled` AS `disabled_default`, IFNULL(`value_video`.`provider`, `default_value_video`.`provider`) AS `video_provider`, IFNULL(`value_video`.`url`, `default_value_video`.`url`) AS `video_url`, IFNULL(`value_video`.`title`, `default_value_video`.`title`) AS `video_title`, IFNULL(`value_video`.`description`, `default_value_video`.`description`) AS `video_description`, IFNULL(`value_video`.`metadata`, `default_value_video`.`metadata`) AS `video_metadata`, `default_value_video`.`provider` AS `video_provider_default`, `default_value_video`.`url` AS `video_url_default`, `default_value_video`.`title` AS `video_title_default`, `default_value_video`.`description` AS `video_description_default`, `default_value_video`.`metadata` AS `video_metadata_default` FROM `catalog_product_entity_media_gallery` AS `main`
+ INNER JOIN `catalog_product_entity_media_gallery_value_to_entity` AS `entity` ON main.value_id = entity.value_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value` AS `value` ON main.value_id = value.value_id AND value.store_id = 1 AND value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value` AS `default_value` ON main.value_id = default_value.value_id AND default_value.store_id = 0 AND default_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value_video` AS `value_video` ON value.value_id = value_video.value_id AND value.store_id = value_video.store_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value_video` AS `default_value_video` ON default_value.value_id = default_value_video.value_id AND default_value.store_id = default_value_video.store_id WHERE (main.attribute_id = '90') AND (main.disabled = 0) AND (entity.entity_id = '2694') ORDER BY IF(value.position IS NULL, default_value.position, value.position) ASC
+
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `catalog_category_product`.`category_id`, `catalog_category_product`.`position` FROM `catalog_category_product` WHERE (product_id = 2694)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_website`.`website_id` FROM `catalog_product_website` WHERE (product_id = 2694)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `l`.`product_id`, `l`.`parent_id` FROM `catalog_product_super_link` AS `l`
+ INNER JOIN `catalog_product_entity` AS `p` ON p.entity_id = l.parent_id
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = l.product_id AND e.required_options = 0 WHERE (p.entity_id IN ('2694'))
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `catalog_product_super_attribute` AS `main_table` WHERE (((((`product_id` = '2694')))))
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `def`.*, IF(store.use_default IS NULL, def.use_default, store.use_default) AS `use_default`, IF(store.value IS NULL, def.value, store.value) AS `label` FROM `catalog_product_super_attribute_label` AS `def`
+ LEFT JOIN `catalog_product_super_attribute_label` AS `store` ON store.product_super_attribute_id = def.product_super_attribute_id AND store.store_id = 1 WHERE (def.product_super_attribute_id IN (382, 381)) AND (def.store_id = 0)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `entity`.`sku`, `product_entity`.`entity_id` AS `product_id`, `attribute`.`attribute_code`, `entity_value`.`value` AS `value_index`, `attribute_label`.`value` AS `super_attribute_label` FROM `catalog_product_super_attribute` AS `super_attribute`
+ INNER JOIN `catalog_product_entity` AS `product_entity` ON product_entity.entity_id = super_attribute.product_id
+ INNER JOIN `catalog_product_super_link` AS `product_link` ON product_link.parent_id = super_attribute.product_id
+ INNER JOIN `eav_attribute` AS `attribute` ON attribute.attribute_id = super_attribute.attribute_id
+ INNER JOIN `catalog_product_entity` AS `entity` ON entity.entity_id = product_link.product_id
+ INNER JOIN `catalog_product_entity_int` AS `entity_value` ON entity_value.attribute_id = super_attribute.attribute_id AND entity_value.store_id = 0 AND entity_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_super_attribute_label` AS `attribute_label` ON super_attribute.product_super_attribute_id = attribute_label.product_super_attribute_id AND attribute_label.store_id = 0
+ LEFT JOIN `eav_attribute_option` AS `attribute_option` ON attribute_option.option_id = entity_value.value WHERE (super_attribute.product_id = 2694) AND (attribute.attribute_id = '93') ORDER BY `attribute_option`.`sort_order` ASC
+
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `main_table`.*, `tdv`.`value` AS `default_value`, `tsv`.`value` AS `store_default_value`, IF(tsv.value_id > 0, tsv.value, tdv.value) AS `value` FROM `eav_attribute_option` AS `main_table`
+ INNER JOIN `eav_attribute_option_value` AS `tdv` ON tdv.option_id = main_table.option_id
+ LEFT JOIN `eav_attribute_option_value` AS `tsv` ON tsv.option_id = main_table.option_id AND tsv.store_id = '1' WHERE (`main_table`.`attribute_id` = '93') AND (tdv.store_id = 0) ORDER BY main_table.sort_order ASC, value ASC
+
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `entity`.`sku`, `product_entity`.`entity_id` AS `product_id`, `attribute`.`attribute_code`, `entity_value`.`value` AS `value_index`, `attribute_label`.`value` AS `super_attribute_label` FROM `catalog_product_super_attribute` AS `super_attribute`
+ INNER JOIN `catalog_product_entity` AS `product_entity` ON product_entity.entity_id = super_attribute.product_id
+ INNER JOIN `catalog_product_super_link` AS `product_link` ON product_link.parent_id = super_attribute.product_id
+ INNER JOIN `eav_attribute` AS `attribute` ON attribute.attribute_id = super_attribute.attribute_id
+ INNER JOIN `catalog_product_entity` AS `entity` ON entity.entity_id = product_link.product_id
+ INNER JOIN `catalog_product_entity_int` AS `entity_value` ON entity_value.attribute_id = super_attribute.attribute_id AND entity_value.store_id = 0 AND entity_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_super_attribute_label` AS `attribute_label` ON super_attribute.product_super_attribute_id = attribute_label.product_super_attribute_id AND attribute_label.store_id = 0
+ LEFT JOIN `eav_attribute_option` AS `attribute_option` ON attribute_option.option_id = entity_value.value WHERE (super_attribute.product_id = 2694) AND (attribute.attribute_id = '143') ORDER BY `attribute_option`.`sort_order` ASC
+
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `main_table`.*, `tdv`.`value` AS `default_value`, `tsv`.`value` AS `store_default_value`, IF(tsv.value_id > 0, tsv.value, tdv.value) AS `value` FROM `eav_attribute_option` AS `main_table`
+ INNER JOIN `eav_attribute_option_value` AS `tdv` ON tdv.option_id = main_table.option_id
+ LEFT JOIN `eav_attribute_option_value` AS `tsv` ON tsv.option_id = main_table.option_id AND tsv.store_id = '1' WHERE (`main_table`.`attribute_id` = '143') AND (tdv.store_id = 0) ORDER BY main_table.sort_order ASC, value ASC
+
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `main_table`.*, `cp_table`.`type_id` FROM `cataloginventory_stock_item` AS `main_table`
+ INNER JOIN `catalog_product_entity` AS `cp_table` ON main_table.product_id = cp_table.entity_id WHERE (`main_table`.`product_id` IN('2694'))
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `catalog_category_product`.`category_id`, `catalog_category_product`.`position` FROM `catalog_category_product` WHERE (product_id = 2694)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MT07'))
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2694')
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `catalog_product_super_attribute` AS `main_table` WHERE (((((`product_id` = '2694'))))) ORDER BY position  ASC
+
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `def`.*, IF(store.use_default IS NULL, def.use_default, store.use_default) AS `use_default`, IF(store.value IS NULL, def.value, store.value) AS `label` FROM `catalog_product_super_attribute_label` AS `def`
+ LEFT JOIN `catalog_product_super_attribute_label` AS `store` ON store.product_super_attribute_id = def.product_super_attribute_id AND store.store_id = 1 WHERE (def.product_super_attribute_id IN (381, 382)) AND (def.store_id = 0)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `entity`.`sku`, `product_entity`.`entity_id` AS `product_id`, `attribute`.`attribute_code`, `entity_value`.`value` AS `value_index`, `attribute_label`.`value` AS `super_attribute_label` FROM `catalog_product_super_attribute` AS `super_attribute`
+ INNER JOIN `catalog_product_entity` AS `product_entity` ON product_entity.entity_id = super_attribute.product_id
+ INNER JOIN `catalog_product_super_link` AS `product_link` ON product_link.parent_id = super_attribute.product_id
+ INNER JOIN `eav_attribute` AS `attribute` ON attribute.attribute_id = super_attribute.attribute_id
+ INNER JOIN `catalog_product_entity` AS `entity` ON entity.entity_id = product_link.product_id
+ INNER JOIN `catalog_product_entity_int` AS `entity_value` ON entity_value.attribute_id = super_attribute.attribute_id AND entity_value.store_id = 0 AND entity_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_super_attribute_label` AS `attribute_label` ON super_attribute.product_super_attribute_id = attribute_label.product_super_attribute_id AND attribute_label.store_id = 0
+ LEFT JOIN `eav_attribute_option` AS `attribute_option` ON attribute_option.option_id = entity_value.value WHERE (super_attribute.product_id = 2694) AND (attribute.attribute_id = '143') ORDER BY `attribute_option`.`sort_order` ASC
+
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `entity`.`sku`, `product_entity`.`entity_id` AS `product_id`, `attribute`.`attribute_code`, `entity_value`.`value` AS `value_index`, `attribute_label`.`value` AS `super_attribute_label` FROM `catalog_product_super_attribute` AS `super_attribute`
+ INNER JOIN `catalog_product_entity` AS `product_entity` ON product_entity.entity_id = super_attribute.product_id
+ INNER JOIN `catalog_product_super_link` AS `product_link` ON product_link.parent_id = super_attribute.product_id
+ INNER JOIN `eav_attribute` AS `attribute` ON attribute.attribute_id = super_attribute.attribute_id
+ INNER JOIN `catalog_product_entity` AS `entity` ON entity.entity_id = product_link.product_id
+ INNER JOIN `catalog_product_entity_int` AS `entity_value` ON entity_value.attribute_id = super_attribute.attribute_id AND entity_value.store_id = 0 AND entity_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_super_attribute_label` AS `attribute_label` ON super_attribute.product_super_attribute_id = attribute_label.product_super_attribute_id AND attribute_label.store_id = 0
+ LEFT JOIN `eav_attribute_option` AS `attribute_option` ON attribute_option.option_id = entity_value.value WHERE (super_attribute.product_id = 2694) AND (attribute.attribute_id = '93') ORDER BY `attribute_option`.`sort_order` ASC
+
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `entity`.`sku`, `product_entity`.`entity_id` AS `product_id`, `attribute`.`attribute_code`, `entity_value`.`value` AS `value_index`, `attribute_label`.`value` AS `super_attribute_label` FROM `catalog_product_super_attribute` AS `super_attribute`
+ INNER JOIN `catalog_product_entity` AS `product_entity` ON product_entity.entity_id = super_attribute.product_id
+ INNER JOIN `catalog_product_super_link` AS `product_link` ON product_link.parent_id = super_attribute.product_id
+ INNER JOIN `eav_attribute` AS `attribute` ON attribute.attribute_id = super_attribute.attribute_id
+ INNER JOIN `catalog_product_entity` AS `entity` ON entity.entity_id = product_link.product_id
+ INNER JOIN `catalog_product_entity_int` AS `entity_value` ON entity_value.attribute_id = super_attribute.attribute_id AND entity_value.store_id = 0 AND entity_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_super_attribute_label` AS `attribute_label` ON super_attribute.product_super_attribute_id = attribute_label.product_super_attribute_id AND attribute_label.store_id = 0
+ LEFT JOIN `eav_attribute_option` AS `attribute_option` ON attribute_option.option_id = entity_value.value WHERE (super_attribute.product_id = 2694) AND (attribute.attribute_id = '143') ORDER BY `attribute_option`.`sort_order` ASC
+
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `entity`.`sku`, `product_entity`.`entity_id` AS `product_id`, `attribute`.`attribute_code`, `entity_value`.`value` AS `value_index`, `attribute_label`.`value` AS `super_attribute_label` FROM `catalog_product_super_attribute` AS `super_attribute`
+ INNER JOIN `catalog_product_entity` AS `product_entity` ON product_entity.entity_id = super_attribute.product_id
+ INNER JOIN `catalog_product_super_link` AS `product_link` ON product_link.parent_id = super_attribute.product_id
+ INNER JOIN `eav_attribute` AS `attribute` ON attribute.attribute_id = super_attribute.attribute_id
+ INNER JOIN `catalog_product_entity` AS `entity` ON entity.entity_id = product_link.product_id
+ INNER JOIN `catalog_product_entity_int` AS `entity_value` ON entity_value.attribute_id = super_attribute.attribute_id AND entity_value.store_id = 0 AND entity_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_super_attribute_label` AS `attribute_label` ON super_attribute.product_super_attribute_id = attribute_label.product_super_attribute_id AND attribute_label.store_id = 0
+ LEFT JOIN `eav_attribute_option` AS `attribute_option` ON attribute_option.option_id = entity_value.value WHERE (super_attribute.product_id = 2694) AND (attribute.attribute_id = '93') ORDER BY `attribute_option`.`sort_order` ASC
+
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MT07-XS-Gray'))
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2689')
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_website`.`website_id` FROM `catalog_product_website` WHERE (product_id = 2694)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `catalog_category_product_index_store1`.`product_id` FROM `catalog_category_product_index_store1` WHERE (product_id = 2694) AND (category_id = 49)
+
+
+
+
+## 2021-01-12 17:55:51
+## 9248 ## QUERY
+SQL: SELECT `layout_update`.`xml`, `layout_update`.`handle` FROM `layout_update`
+ INNER JOIN `layout_link` AS `link` ON link.layout_update_id=layout_update.layout_update_id WHERE (link.store_id IN (0, :store_id)) AND (link.theme_id = :theme_id) AND (link.is_temporary = 0) ORDER BY `layout_update`.`sort_order` ASC
+
+BIND: array (
+  ':theme_id' => '3',
+  ':store_id' => '1',
+)
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT COUNT(*) FROM `review` AS `main_table`
+ INNER JOIN `review_detail` AS `detail` ON main_table.review_id = detail.review_id
+ INNER JOIN `review_store` AS `store` ON main_table.review_id=store.review_id
+ INNER JOIN `review_entity` ON main_table.entity_id=review_entity.entity_id WHERE (store.store_id IN('1')) AND (main_table.status_id=1) AND (review_entity.entity_code='product') AND (main_table.entity_pk_value='2694')
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `url_rewrite`.*, `relation`.`category_id`, `relation`.`product_id` FROM `url_rewrite`
+ LEFT JOIN `catalog_url_rewrite_product_category` AS `relation` ON url_rewrite.url_rewrite_id = relation.url_rewrite_id WHERE (url_rewrite.entity_id IN ('2694')) AND (url_rewrite.entity_type IN ('product')) AND (url_rewrite.store_id IN (1)) AND (relation.category_id IS NULL)
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: (SELECT `child`.`entity_id` FROM `catalog_product_entity` AS `parent`
+ INNER JOIN `catalog_product_relation` AS `link` ON link.parent_id = parent.entity_id
+ INNER JOIN `catalog_product_entity` AS `child` ON child.entity_id = link.child_id
+ INNER JOIN `catalog_product_index_price` AS `t` ON t.entity_id = child.entity_id
+ LEFT JOIN `catalog_product_entity_int` AS `status_global_attr` ON status_global_attr.entity_id = child.entity_id AND status_global_attr.attribute_id = 97 AND status_global_attr.store_id = 0
+ LEFT JOIN `catalog_product_entity_int` AS `status_attr` ON status_attr.entity_id = child.entity_id AND status_attr.attribute_id = 97 AND status_attr.store_id = 1
+ INNER JOIN `cataloginventory_stock_status` AS `stock` ON stock.product_id = child.entity_id WHERE (parent.entity_id = '2694') AND (t.website_id = '1') AND (t.customer_group_id = 0) AND (IFNULL(status_attr.value, status_global_attr.value) = 1) AND (stock.stock_status = 1) ORDER BY `t`.`min_price` ASC, `child`.`entity_id` ASC
+ LIMIT 1)
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `e`.*, `stock_status_index`.`stock_status` AS `is_salable` FROM `catalog_product_entity` AS `e`
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id WHERE (`e`.`entity_id` IN('2689')) AND (stock_status_index.stock_status = 1)
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_decimal` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_decimal` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2689)) AND (t_d.attribute_id IN ('77', '78')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_datetime` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_datetime` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2689)) AND (t_d.attribute_id IN ('79', '80')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_int` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_int` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2689)) AND (t_d.attribute_id IN ('134')) AND (t_d.store_id = IFNULL(t_s.store_id, 0))
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity_tier_price`.`value_id` AS `price_id`, `catalog_product_entity_tier_price`.`website_id`, `catalog_product_entity_tier_price`.`all_groups`, `catalog_product_entity_tier_price`.`customer_group_id` AS `cust_group`, `catalog_product_entity_tier_price`.`value` AS `price`, `catalog_product_entity_tier_price`.`qty` AS `price_qty`, `catalog_product_entity_tier_price`.`percentage_value` FROM `catalog_product_entity_tier_price` WHERE (website_id = 0) AND (entity_id = '2689') ORDER BY `qty` ASC
+
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `catalogrule_product_price`.`product_id`, `catalogrule_product_price`.`rule_price` FROM `catalogrule_product_price` WHERE (rule_date = '2021-01-12') AND (website_id = '1') AND (customer_group_id = 0) AND (product_id IN('2689'))
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `directory_currency_rate`.`currency_to`, `directory_currency_rate`.`rate` FROM `directory_currency_rate` WHERE (currency_from = :currency_from) AND (currency_to IN('USD', 'EUR'))
+BIND: array (
+  ':currency_from' => 'USD',
+)
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `store` AS `main_table` WHERE (`main_table`.`website_id` IN('1')) ORDER BY CASE WHEN main_table.store_id = 0 THEN 0 ELSE 1 END ASC, main_table.sort_order ASC, main_table.name ASC
+
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `store_group` AS `main_table` WHERE (`main_table`.`website_id` IN('1')) ORDER BY main_table.name ASC
+
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `captcha_log`.`count` FROM `captcha_log` WHERE (type = 1) AND (value = '::1')
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `captcha_log`.`count` FROM `captcha_log` WHERE (type = 1) AND (value = '::1')
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SHOW INDEX FROM `catalog_category_entity`
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `main_table`.*, `additional_table`.* FROM `eav_attribute` AS `main_table`
+ INNER JOIN `catalog_eav_attribute` AS `additional_table` ON additional_table.attribute_id = main_table.attribute_id WHERE (main_table.entity_type_id=3) AND (`attribute_code` IN('all_children', 'available_sort_by', 'children', 'children_count', 'custom_apply_to_products', 'custom_design', 'custom_design_from', 'custom_design_to', 'custom_layout_update', 'custom_use_parent_settings', 'default_sort_by', 'description', 'display_mode', 'filter_price_range', 'image', 'include_in_menu', 'is_active', 'is_anchor', 'landing_page', 'level', 'meta_description', 'meta_keywords', 'meta_title', 'name', 'page_layout', 'path', 'path_in_store', 'position', 'url_key', 'url_path'))
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `catalog_category_entity`.* FROM `catalog_category_entity` WHERE (entity_id ='2')
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `main_table`.*, `additional_table`.*, `entity_attribute`.*, IFNULL(al.value, main_table.frontend_label) AS `store_label` FROM `eav_attribute` AS `main_table`
+ INNER JOIN `catalog_eav_attribute` AS `additional_table` ON additional_table.attribute_id = main_table.attribute_id
+ INNER JOIN `eav_entity_attribute` AS `entity_attribute` ON entity_attribute.attribute_id = main_table.attribute_id
+ LEFT JOIN `eav_attribute_label` AS `al` ON al.attribute_id = main_table.attribute_id AND al.store_id = 1 WHERE (main_table.entity_type_id=3) AND (`entity_attribute`.`attribute_set_id` = '3') ORDER BY entity_attribute.sort_order ASC
+
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `t`.* FROM `catalog_category_entity` AS `t` WHERE (entity_id = '2')
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `main_table`.*, `additional_table`.*, `entity_attribute`.*, IFNULL(al.value, main_table.frontend_label) AS `store_label` FROM `eav_attribute` AS `main_table`
+ INNER JOIN `catalog_eav_attribute` AS `additional_table` ON additional_table.attribute_id = main_table.attribute_id
+ INNER JOIN `eav_entity_attribute` AS `entity_attribute` ON entity_attribute.attribute_id = main_table.attribute_id
+ LEFT JOIN `eav_attribute_label` AS `al` ON al.attribute_id = main_table.attribute_id AND al.store_id = 0 WHERE (main_table.entity_type_id=3) AND (`entity_attribute`.`attribute_set_id` = '3') ORDER BY entity_attribute.sort_order ASC
+
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `u`.* FROM ( (SELECT `t`.`value`, `t`.`attribute_id`, `t`.`store_id` FROM `catalog_category_entity_varchar` AS `t` WHERE (entity_id = '2') AND (attribute_id IN ('45', '126', '48', '49', '52', '60', '127', '63', '68', '118')) AND (`store_id` IN (1, 0)))UNION ALL(SELECT `t`.`value`, `t`.`attribute_id`, `t`.`store_id` FROM `catalog_category_entity_int` AS `t` WHERE (entity_id = '2') AND (attribute_id IN ('46', '70', '71', '69', '53', '54')) AND (`store_id` IN (1, 0)))UNION ALL(SELECT `t`.`value`, `t`.`attribute_id`, `t`.`store_id` FROM `catalog_category_entity_text` AS `t` WHERE (entity_id = '2') AND (attribute_id IN ('47', '50', '51', '57', '58', '59', '67', '64')) AND (`store_id` IN (1, 0)))UNION ALL(SELECT `t`.`value`, `t`.`attribute_id`, `t`.`store_id` FROM `catalog_category_entity_datetime` AS `t` WHERE (entity_id = '2') AND (attribute_id IN ('61', '62')) AND (`store_id` IN (1, 0)))UNION ALL(SELECT `t`.`value`, `t`.`attribute_id`, `t`.`store_id` FROM `catalog_category_entity_decimal` AS `t` WHERE (entity_id = '2') AND (attribute_id IN ('72')) AND (`store_id` IN (1, 0))) ) AS `u` ORDER BY `store_id` ASC
+
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `catalog_category_entity`.`entity_id` FROM `catalog_category_entity` WHERE (entity_id = '2') LIMIT 1
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `e`.*, IF(at_include_in_menu.value_id > 0, at_include_in_menu.value, at_include_in_menu_default.value) AS `include_in_menu`, IF(at_is_active.value_id > 0, at_is_active.value, at_is_active_default.value) AS `is_active`, `url_rewrite`.`request_path` FROM `catalog_category_entity` AS `e`
+ INNER JOIN `catalog_category_entity_int` AS `at_include_in_menu_default` ON (`at_include_in_menu_default`.`entity_id` = `e`.`entity_id`) AND (`at_include_in_menu_default`.`attribute_id` = '69') AND `at_include_in_menu_default`.`store_id` = 0
+ LEFT JOIN `catalog_category_entity_int` AS `at_include_in_menu` ON (`at_include_in_menu`.`entity_id` = `e`.`entity_id`) AND (`at_include_in_menu`.`attribute_id` = '69') AND (`at_include_in_menu`.`store_id` = 1)
+ INNER JOIN `catalog_category_entity_int` AS `at_is_active_default` ON (`at_is_active_default`.`entity_id` = `e`.`entity_id`) AND (`at_is_active_default`.`attribute_id` = '46') AND `at_is_active_default`.`store_id` = 0
+ LEFT JOIN `catalog_category_entity_int` AS `at_is_active` ON (`at_is_active`.`entity_id` = `e`.`entity_id`) AND (`at_is_active`.`attribute_id` = '46') AND (`at_is_active`.`store_id` = 1)
+ LEFT JOIN `url_rewrite` ON (url_rewrite.entity_id =e.entity_id) AND (url_rewrite.is_autogenerated = 1 AND url_rewrite.store_id = 1 AND url_rewrite.entity_type = 'category') WHERE (`e`.`path` LIKE '1/2/%') AND (IF(at_include_in_menu.value_id > 0, at_include_in_menu.value, at_include_in_menu_default.value) = '1') AND (IF(at_is_active.value_id > 0, at_is_active.value, at_is_active_default.value) = '1') ORDER BY `e`.`level` ASC, `e`.`position` ASC, `e`.`parent_id` ASC, `e`.`entity_id` ASC
+
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_category_entity_varchar` AS `t_d`
+ INNER JOIN `catalog_category_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_category_entity_varchar` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (64, 46, 37, 3, 9, 63, 4, 10, 38, 47, 5, 39, 48, 6, 40, 44, 49, 53, 41, 45, 50, 54, 42, 51, 43, 52)) AND (t_d.attribute_id IN ('45')) AND (t_d.store_id = IFNULL(t_s.store_id, 0))
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `directory_currency_rate`.`currency_to`, `directory_currency_rate`.`rate` FROM `directory_currency_rate` WHERE (currency_from = :currency_from) AND (currency_to IN('USD', 'EUR'))
+BIND: array (
+  ':currency_from' => 'USD',
+)
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `review_entity_summary` AS `main_table` WHERE (entity_pk_value IN('2694')) AND (entity_type = 1) AND (store_id = 1)
+
+
+
+
+## 2021-01-12 17:55:52
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT COUNT(DISTINCT e.entity_id) FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id
+ INNER JOIN `catalog_product_website` AS `product_website` ON product_website.product_id = e.entity_id AND product_website.website_id = 1
+ INNER JOIN `catalog_product_entity_int` AS `at_status_default` ON (`at_status_default`.`entity_id` = `e`.`entity_id`) AND (`at_status_default`.`attribute_id` = '97') AND `at_status_default`.`store_id` = 0
+ LEFT JOIN `catalog_product_entity_int` AS `at_status` ON (`at_status`.`entity_id` = `e`.`entity_id`) AND (`at_status`.`attribute_id` = '97') AND (`at_status`.`store_id` = 1)
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id WHERE (IF(at_status.value_id > 0, at_status.value, at_status_default.value) = '1') AND (stock_status_index.stock_status = 1) AND (link_table.parent_id in ('2694'))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `store_group` AS `main_table` WHERE (`main_table`.`website_id` IN('1')) ORDER BY main_table.name ASC
+
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `main_table`.*, `additional_table`.*, IF(al.value IS NOT NULL, al.value, main_table.frontend_label) AS `store_label` FROM `eav_attribute` AS `main_table`
+ INNER JOIN `catalog_eav_attribute` AS `additional_table` ON main_table.attribute_id = additional_table.attribute_id
+ LEFT JOIN `eav_attribute_label` AS `al` ON al.attribute_id = main_table.attribute_id AND al.store_id = 1 WHERE (main_table.entity_type_id = 4) AND (additional_table.used_in_product_listing = 1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT COUNT(DISTINCT e.entity_id) FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id WHERE (((`e`.`required_options` != 1) OR (`e`.`required_options` IS NULL))) AND (link_table.parent_id in ('2694'))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `e`.*, `link_table`.`parent_id`, `stock_status_index`.`stock_status` AS `is_salable`, `catalog_rule`.`rule_price` AS `catalog_rule_price` FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id
+ LEFT JOIN `catalogrule_product_price` AS `catalog_rule` ON catalog_rule.product_id = `e`.`entity_id` AND catalog_rule.website_id = '1' AND catalog_rule.customer_group_id = 0 AND catalog_rule.rule_date = '2021-01-12' WHERE (((`e`.`required_options` != 1) OR (`e`.`required_options` IS NULL))) AND (link_table.parent_id in ('2694')) AND (stock_status_index.stock_status = 1) AND (link_table.parent_id in ('2694'))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_varchar` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_varchar` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2689, 2690, 2691, 2692, 2693)) AND (t_d.attribute_id IN ('87', '73', '88', '89', '109', '110', '111', '120', '128', '162')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_int` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_int` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2689, 2690, 2691, 2692, 2693)) AND (t_d.attribute_id IN ('143', '93', '97', '121', '123', '124', '125', '130', '133', '134', '99')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_text` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_text` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2689, 2690, 2691, 2692, 2693)) AND (t_d.attribute_id IN ('76')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_decimal` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_decimal` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2689, 2690, 2691, 2692, 2693)) AND (t_d.attribute_id IN ('77', '78', '119', '82')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_datetime` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_datetime` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2689, 2690, 2691, 2692, 2693)) AND (t_d.attribute_id IN ('79', '80', '94', '95')) AND (t_d.store_id = IFNULL(t_s.store_id, 0))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `main`.`value_id`, `main`.`value` AS `file`, `main`.`media_type`, `entity`.`entity_id`, IFNULL(`value`.`label`, `default_value`.`label`) AS `label`, IFNULL(`value`.`position`, `default_value`.`position`) AS `position`, IFNULL(`value`.`disabled`, `default_value`.`disabled`) AS `disabled`, `default_value`.`label` AS `label_default`, `default_value`.`position` AS `position_default`, `default_value`.`disabled` AS `disabled_default`, IFNULL(`value_video`.`provider`, `default_value_video`.`provider`) AS `video_provider`, IFNULL(`value_video`.`url`, `default_value_video`.`url`) AS `video_url`, IFNULL(`value_video`.`title`, `default_value_video`.`title`) AS `video_title`, IFNULL(`value_video`.`description`, `default_value_video`.`description`) AS `video_description`, IFNULL(`value_video`.`metadata`, `default_value_video`.`metadata`) AS `video_metadata`, `default_value_video`.`provider` AS `video_provider_default`, `default_value_video`.`url` AS `video_url_default`, `default_value_video`.`title` AS `video_title_default`, `default_value_video`.`description` AS `video_description_default`, `default_value_video`.`metadata` AS `video_metadata_default` FROM `catalog_product_entity_media_gallery` AS `main`
+ INNER JOIN `catalog_product_entity_media_gallery_value_to_entity` AS `entity` ON main.value_id = entity.value_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value` AS `value` ON main.value_id = value.value_id AND value.store_id = 1 AND value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value` AS `default_value` ON main.value_id = default_value.value_id AND default_value.store_id = 0 AND default_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value_video` AS `value_video` ON value.value_id = value_video.value_id AND value.store_id = value_video.store_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value_video` AS `default_value_video` ON default_value.value_id = default_value_video.value_id AND default_value.store_id = default_value_video.store_id WHERE (main.attribute_id = '90') AND (main.disabled = 0) AND (entity.entity_id IN (2689, 2690, 2691, 2692, 2693))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity_tier_price`.`value_id` AS `price_id`, `catalog_product_entity_tier_price`.`website_id`, `catalog_product_entity_tier_price`.`all_groups`, `catalog_product_entity_tier_price`.`customer_group_id` AS `cust_group`, `catalog_product_entity_tier_price`.`value` AS `price`, `catalog_product_entity_tier_price`.`qty` AS `price_qty`, `catalog_product_entity_tier_price`.`percentage_value`, `catalog_product_entity_tier_price`.`entity_id` AS `product_id` FROM `catalog_product_entity_tier_price` WHERE (website_id = 0) AND (entity_id IN('2689', '2690', '2691', '2692', '2693')) ORDER BY `qty` ASC
+
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MT07-S-Gray'))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2690')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MT07-M-Gray'))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2691')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MT07-L-Gray'))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2692')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MT07-XL-Gray'))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2693')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `e`.`entity_id` FROM `catalog_product_super_link` AS `l`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = l.parent_id WHERE (l.product_id IN('2694'))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `tbl_selection`.`product_id`, `tbl_selection`.`parent_product_id`, `tbl_selection`.`option_id`, `parent`.*, `tbl_option`.`required` FROM `catalog_product_bundle_selection` AS `tbl_selection`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = tbl_selection.product_id AND e.required_options=0
+ INNER JOIN `catalog_product_entity` AS `parent` ON tbl_selection.parent_product_id = parent.entity_id
+ INNER JOIN `catalog_product_bundle_option` AS `tbl_option` ON tbl_option.option_id = tbl_selection.option_id WHERE (parent.entity_id = :parent_id)
+BIND: array (
+  ':parent_id' => '2694',
+)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity_tier_price`.`value_id` AS `price_id`, `catalog_product_entity_tier_price`.`website_id`, `catalog_product_entity_tier_price`.`all_groups`, `catalog_product_entity_tier_price`.`customer_group_id` AS `cust_group`, `catalog_product_entity_tier_price`.`value` AS `price`, `catalog_product_entity_tier_price`.`qty` AS `price_qty`, `catalog_product_entity_tier_price`.`percentage_value` FROM `catalog_product_entity_tier_price` WHERE (website_id = 0) AND (entity_id = '2694') ORDER BY `qty` ASC
+
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `eav_entity_type`.* FROM `eav_entity_type` WHERE (`eav_entity_type`.`entity_type_code`='catalog_product')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `eav_attribute`.* FROM `eav_attribute` WHERE (`eav_attribute`.`attribute_code`='msrp') AND (entity_type_id = :entity_type_id)
+BIND: array (
+  ':entity_type_id' => 4,
+)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `eav_entity_type`.`additional_attribute_table` FROM `eav_entity_type` WHERE (entity_type_id = :entity_type_id)
+BIND: array (
+  ':entity_type_id' => '4',
+)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `catalog_eav_attribute`.* FROM `catalog_eav_attribute` WHERE (attribute_id = :attribute_id)
+BIND: array (
+  ':attribute_id' => '119',
+)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `e`.`entity_id` FROM `catalog_product_super_link` AS `l`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = l.parent_id WHERE (l.product_id IN('2694'))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `tbl_selection`.`product_id`, `tbl_selection`.`parent_product_id`, `tbl_selection`.`option_id`, `parent`.*, `tbl_option`.`required` FROM `catalog_product_bundle_selection` AS `tbl_selection`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = tbl_selection.product_id AND e.required_options=0
+ INNER JOIN `catalog_product_entity` AS `parent` ON tbl_selection.parent_product_id = parent.entity_id
+ INNER JOIN `catalog_product_bundle_option` AS `tbl_option` ON tbl_option.option_id = tbl_selection.option_id WHERE (parent.entity_id = :parent_id)
+BIND: array (
+  ':parent_id' => '2694',
+)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT COUNT(DISTINCT e.entity_id) FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id
+ INNER JOIN `catalog_product_website` AS `product_website` ON product_website.product_id = e.entity_id AND product_website.website_id = 1
+ INNER JOIN `catalog_product_entity_int` AS `at_status_default` ON (`at_status_default`.`entity_id` = `e`.`entity_id`) AND (`at_status_default`.`attribute_id` = '97') AND `at_status_default`.`store_id` = 0
+ LEFT JOIN `catalog_product_entity_int` AS `at_status` ON (`at_status`.`entity_id` = `e`.`entity_id`) AND (`at_status`.`attribute_id` = '97') AND (`at_status`.`store_id` = 1)
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id WHERE (IF(at_status.value_id > 0, at_status.value, at_status_default.value) = '1') AND (stock_status_index.stock_status = 1) AND (link_table.parent_id in ('2694'))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `e`.`entity_id` FROM `catalog_product_super_link` AS `l`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = l.parent_id WHERE (l.product_id IN('2694'))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `tbl_selection`.`product_id`, `tbl_selection`.`parent_product_id`, `tbl_selection`.`option_id`, `parent`.*, `tbl_option`.`required` FROM `catalog_product_bundle_selection` AS `tbl_selection`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = tbl_selection.product_id AND e.required_options=0
+ INNER JOIN `catalog_product_entity` AS `parent` ON tbl_selection.parent_product_id = parent.entity_id
+ INNER JOIN `catalog_product_bundle_option` AS `tbl_option` ON tbl_option.option_id = tbl_selection.option_id WHERE (parent.entity_id = :parent_id)
+BIND: array (
+  ':parent_id' => '2694',
+)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `e`.`entity_id` FROM `catalog_product_super_link` AS `l`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = l.parent_id WHERE (l.product_id IN('2694'))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `tbl_selection`.`product_id`, `tbl_selection`.`parent_product_id`, `tbl_selection`.`option_id`, `parent`.*, `tbl_option`.`required` FROM `catalog_product_bundle_selection` AS `tbl_selection`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = tbl_selection.product_id AND e.required_options=0
+ INNER JOIN `catalog_product_entity` AS `parent` ON tbl_selection.parent_product_id = parent.entity_id
+ INNER JOIN `catalog_product_bundle_option` AS `tbl_option` ON tbl_option.option_id = tbl_selection.option_id WHERE (parent.entity_id = :parent_id)
+BIND: array (
+  ':parent_id' => '2694',
+)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT COUNT(DISTINCT e.entity_id) FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id
+ INNER JOIN `catalog_product_website` AS `product_website` ON product_website.product_id = e.entity_id AND product_website.website_id = 1
+ INNER JOIN `catalog_product_entity_int` AS `at_status_default` ON (`at_status_default`.`entity_id` = `e`.`entity_id`) AND (`at_status_default`.`attribute_id` = '97') AND `at_status_default`.`store_id` = 0
+ LEFT JOIN `catalog_product_entity_int` AS `at_status` ON (`at_status`.`entity_id` = `e`.`entity_id`) AND (`at_status`.`attribute_id` = '97') AND (`at_status`.`store_id` = 1)
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id WHERE (IF(at_status.value_id > 0, at_status.value, at_status_default.value) = '1') AND (stock_status_index.stock_status = 1) AND (link_table.parent_id in ('2694'))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `e`.`entity_id` FROM `catalog_product_super_link` AS `l`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = l.parent_id WHERE (l.product_id IN('2694'))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `tbl_selection`.`product_id`, `tbl_selection`.`parent_product_id`, `tbl_selection`.`option_id`, `parent`.*, `tbl_option`.`required` FROM `catalog_product_bundle_selection` AS `tbl_selection`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = tbl_selection.product_id AND e.required_options=0
+ INNER JOIN `catalog_product_entity` AS `parent` ON tbl_selection.parent_product_id = parent.entity_id
+ INNER JOIN `catalog_product_bundle_option` AS `tbl_option` ON tbl_option.option_id = tbl_selection.option_id WHERE (parent.entity_id = :parent_id)
+BIND: array (
+  ':parent_id' => '2694',
+)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `eav_attribute_option_swatch` AS `main_table` WHERE (`main_table`.`option_id` IN(274, 52, 275, 276, 277, 278))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `e`.`entity_id` FROM `catalog_product_super_link` AS `l`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = l.parent_id WHERE (l.product_id IN('2694'))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `tbl_selection`.`product_id`, `tbl_selection`.`parent_product_id`, `tbl_selection`.`option_id`, `parent`.*, `tbl_option`.`required` FROM `catalog_product_bundle_selection` AS `tbl_selection`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = tbl_selection.product_id AND e.required_options=0
+ INNER JOIN `catalog_product_entity` AS `parent` ON tbl_selection.parent_product_id = parent.entity_id
+ INNER JOIN `catalog_product_bundle_option` AS `tbl_option` ON tbl_option.option_id = tbl_selection.option_id WHERE (parent.entity_id = :parent_id)
+BIND: array (
+  ':parent_id' => '2694',
+)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `entity`.`attribute_id`, `entity`.`attribute_set_id`, `entity`.`attribute_group_id`, `entity`.`sort_order`, `attribute_group`.`sort_order` AS `group_sort_order` FROM `eav_entity_attribute` AS `entity`
+ LEFT JOIN `eav_attribute_group` AS `attribute_group` ON entity.attribute_group_id = attribute_group.attribute_group_id WHERE (entity.attribute_set_id = :attribute_set_id)
+BIND: array (
+  ':attribute_set_id' => '9',
+)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `main_table`.*, `tdv`.`value` AS `default_value`, `tsv`.`value` AS `store_default_value`, IF(tsv.value_id > 0, tsv.value, tdv.value) AS `value` FROM `eav_attribute_option` AS `main_table`
+ INNER JOIN `eav_attribute_option_value` AS `tdv` ON tdv.option_id = main_table.option_id
+ LEFT JOIN `eav_attribute_option_value` AS `tsv` ON tsv.option_id = main_table.option_id AND tsv.store_id = '1' WHERE (`main_table`.`attribute_id` = '136') AND (`main_table`.`option_id` IN('')) AND (tdv.store_id = 0) ORDER BY main_table.sort_order ASC, value ASC
+
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `main_table`.*, `tdv`.`value` AS `default_value`, `tsv`.`value` AS `store_default_value`, IF(tsv.value_id > 0, tsv.value, tdv.value) AS `value` FROM `eav_attribute_option` AS `main_table`
+ INNER JOIN `eav_attribute_option_value` AS `tdv` ON tdv.option_id = main_table.option_id
+ LEFT JOIN `eav_attribute_option_value` AS `tsv` ON tsv.option_id = main_table.option_id AND tsv.store_id = '1' WHERE (`main_table`.`attribute_id` = '157') AND (`main_table`.`option_id` IN('242')) AND (tdv.store_id = 0) ORDER BY main_table.sort_order ASC, value ASC
+
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `main_table`.*, `tdv`.`value` AS `default_value`, `tsv`.`value` AS `store_default_value`, IF(tsv.value_id > 0, tsv.value, tdv.value) AS `value` FROM `eav_attribute_option` AS `main_table`
+ INNER JOIN `eav_attribute_option_value` AS `tdv` ON tdv.option_id = main_table.option_id
+ LEFT JOIN `eav_attribute_option_value` AS `tsv` ON tsv.option_id = main_table.option_id AND tsv.store_id = '1' WHERE (`main_table`.`attribute_id` = '138') AND (`main_table`.`option_id` IN('261', '38')) AND (tdv.store_id = 0) ORDER BY main_table.sort_order ASC, value ASC
+
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `main_table`.*, `tdv`.`value` AS `default_value`, `tsv`.`value` AS `store_default_value`, IF(tsv.value_id > 0, tsv.value, tdv.value) AS `value` FROM `eav_attribute_option` AS `main_table`
+ INNER JOIN `eav_attribute_option_value` AS `tdv` ON tdv.option_id = main_table.option_id
+ LEFT JOIN `eav_attribute_option_value` AS `tsv` ON tsv.option_id = main_table.option_id AND tsv.store_id = '1' WHERE (`main_table`.`attribute_id` = '158') AND (`main_table`.`option_id` IN('')) AND (tdv.store_id = 0) ORDER BY main_table.sort_order ASC, value ASC
+
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `main_table`.*, `tdv`.`value` AS `default_value`, `tsv`.`value` AS `store_default_value`, IF(tsv.value_id > 0, tsv.value, tdv.value) AS `value` FROM `eav_attribute_option` AS `main_table`
+ INNER JOIN `eav_attribute_option_value` AS `tdv` ON tdv.option_id = main_table.option_id
+ LEFT JOIN `eav_attribute_option_value` AS `tsv` ON tsv.option_id = main_table.option_id AND tsv.store_id = '1' WHERE (`main_table`.`attribute_id` = '159') AND (`main_table`.`option_id` IN('')) AND (tdv.store_id = 0) ORDER BY main_table.sort_order ASC, value ASC
+
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `main_table`.*, `tdv`.`value` AS `default_value`, `tsv`.`value` AS `store_default_value`, IF(tsv.value_id > 0, tsv.value, tdv.value) AS `value` FROM `eav_attribute_option` AS `main_table`
+ INNER JOIN `eav_attribute_option_value` AS `tdv` ON tdv.option_id = main_table.option_id
+ LEFT JOIN `eav_attribute_option_value` AS `tsv` ON tsv.option_id = main_table.option_id AND tsv.store_id = '1' WHERE (`main_table`.`attribute_id` = '160') AND (`main_table`.`option_id` IN('304')) AND (tdv.store_id = 0) ORDER BY main_table.sort_order ASC, value ASC
+
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `main_table`.*, `tdv`.`value` AS `default_value`, `tsv`.`value` AS `store_default_value`, IF(tsv.value_id > 0, tsv.value, tdv.value) AS `value` FROM `eav_attribute_option` AS `main_table`
+ INNER JOIN `eav_attribute_option_value` AS `tdv` ON tdv.option_id = main_table.option_id
+ LEFT JOIN `eav_attribute_option_value` AS `tsv` ON tsv.option_id = main_table.option_id AND tsv.store_id = '1' WHERE (`main_table`.`attribute_id` = '161') AND (`main_table`.`option_id` IN('309', '312', '316')) AND (tdv.store_id = 0) ORDER BY main_table.sort_order ASC, value ASC
+
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT DISTINCT  `main_table`.*, `rating_entity`.`entity_code`, IFNULL(title.value, main_table.rating_code) AS `rating_code` FROM `rating` AS `main_table`
+ INNER JOIN `rating_entity` ON main_table.entity_id=rating_entity.entity_id
+ LEFT JOIN `rating_title` AS `title` ON main_table.rating_id=title.rating_id AND title.store_id = 1
+ INNER JOIN `rating_store` AS `store` ON main_table.rating_id = store.rating_id WHERE (store.store_id IN('1')) AND (main_table.is_active='1') AND (rating_entity.entity_code='product') ORDER BY main_table.position ASC
+
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `rating_option` AS `main_table` WHERE (rating_id IN('4')) ORDER BY main_table.position ASC
+
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT DISTINCT  `main_table`.*, `rating_entity`.`entity_code`, IFNULL(title.value, main_table.rating_code) AS `rating_code` FROM `rating` AS `main_table`
+ INNER JOIN `rating_entity` ON main_table.entity_id=rating_entity.entity_id
+ LEFT JOIN `rating_title` AS `title` ON main_table.rating_id=title.rating_id AND title.store_id = 1
+ INNER JOIN `rating_store` AS `store` ON main_table.rating_id = store.rating_id WHERE (store.store_id IN('1')) AND (main_table.is_active='1') AND (rating_entity.entity_code='product') ORDER BY main_table.position ASC
+
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `rating_option` AS `main_table` WHERE (rating_id IN('4')) ORDER BY main_table.position ASC
+
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT DISTINCT  COUNT(*) FROM `rating` AS `main_table`
+ INNER JOIN `rating_entity` ON main_table.entity_id=rating_entity.entity_id
+ LEFT JOIN `rating_title` AS `title` ON main_table.rating_id=title.rating_id AND title.store_id = 1
+ INNER JOIN `rating_store` AS `store` ON main_table.rating_id = store.rating_id WHERE (store.store_id IN('1')) AND (main_table.is_active='1') AND (rating_entity.entity_code='product')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT DISTINCT  `main_table`.*, `rating_entity`.`entity_code`, IFNULL(title.value, main_table.rating_code) AS `rating_code` FROM `rating` AS `main_table`
+ INNER JOIN `rating_entity` ON main_table.entity_id=rating_entity.entity_id
+ LEFT JOIN `rating_title` AS `title` ON main_table.rating_id=title.rating_id AND title.store_id = 1
+ INNER JOIN `rating_store` AS `store` ON main_table.rating_id = store.rating_id WHERE (store.store_id IN('1')) AND (main_table.is_active='1') AND (rating_entity.entity_code='product') ORDER BY main_table.position ASC
+
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `rating_option` AS `main_table` WHERE (rating_id IN('4')) ORDER BY main_table.position ASC
+
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `e`.`entity_id` FROM `catalog_product_super_link` AS `l`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = l.parent_id WHERE (l.product_id IN('2694'))
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `tbl_selection`.`product_id`, `tbl_selection`.`parent_product_id`, `tbl_selection`.`option_id`, `parent`.*, `tbl_option`.`required` FROM `catalog_product_bundle_selection` AS `tbl_selection`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = tbl_selection.product_id AND e.required_options=0
+ INNER JOIN `catalog_product_entity` AS `parent` ON tbl_selection.parent_product_id = parent.entity_id
+ INNER JOIN `catalog_product_bundle_option` AS `tbl_option` ON tbl_option.option_id = tbl_selection.option_id WHERE (parent.entity_id = :parent_id)
+BIND: array (
+  ':parent_id' => '2694',
+)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `review_entity_summary` AS `main_table` WHERE (entity_pk_value IN('2694')) AND (entity_type = 1) AND (store_id = 1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:53
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: DESCRIBE `catalog_product_entity`
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_link_attribute`.`product_link_attribute_id` AS `id`, `catalog_product_link_attribute`.`product_link_attribute_code` AS `code`, `catalog_product_link_attribute`.`data_type` AS `type` FROM `catalog_product_link_attribute` WHERE (link_type_id = 1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `e`.*, `at_inventory_in_stock`.`is_in_stock` AS `inventory_in_stock`, `price_index`.`price`, `price_index`.`tax_class_id`, `price_index`.`final_price`, IF(price_index.tier_price IS NOT NULL, LEAST(price_index.min_price, price_index.tier_price), price_index.min_price) AS `minimal_price`, `price_index`.`min_price`, `price_index`.`max_price`, `price_index`.`tier_price`, `cat_index`.`position` AS `cat_index_position`, `stock_status_index`.`stock_status` AS `is_salable`, `links`.`link_id`, `links`.`product_id` AS `_linked_to_product_id`, `link_attribute_position_int`.`value` AS `position` FROM `catalog_product_entity` AS `e`
+ INNER JOIN `cataloginventory_stock_item` AS `at_inventory_in_stock` ON (at_inventory_in_stock.`product_id`=e.entity_id) AND ((at_inventory_in_stock.use_config_manage_stock = 0 AND at_inventory_in_stock.manage_stock=1 AND at_inventory_in_stock.is_in_stock=1) OR (at_inventory_in_stock.use_config_manage_stock = 0 AND at_inventory_in_stock.manage_stock=0) OR (at_inventory_in_stock.use_config_manage_stock = 1 AND at_inventory_in_stock.is_in_stock=1))
+ INNER JOIN `catalog_product_index_price` AS `price_index` ON price_index.entity_id = e.entity_id AND price_index.customer_group_id = 0 AND price_index.website_id = '1'
+ INNER JOIN `catalog_category_product_index_store1` AS `cat_index` ON cat_index.product_id=e.entity_id AND cat_index.store_id=1 AND cat_index.visibility IN(2, 4) AND cat_index.category_id=2
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id
+ INNER JOIN `catalog_product_link` AS `links` ON links.linked_product_id = e.entity_id AND links.link_type_id = 1
+ LEFT JOIN `catalog_product_link_attribute_int` AS `link_attribute_position_int` ON link_attribute_position_int.link_id = links.link_id AND link_attribute_position_int.product_link_attribute_id = '1'
+ INNER JOIN `catalog_product_entity` AS `product_entity_table` ON links.product_id = product_entity_table.entity_id WHERE (stock_status_index.stock_status = 1) AND (links.product_id in ('2694')) AND (`e`.`entity_id` != '2694') ORDER BY `position` ASC
+
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_int` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_int` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2898, 3028, 2510, 2446)) AND (t_d.attribute_id IN ('143', '93', '97', '121', '123', '124', '125', '130', '133', '134')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_varchar` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_varchar` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2898, 3028, 2510, 2446)) AND (t_d.attribute_id IN ('73', '87', '88', '89', '109', '110', '111', '120', '128', '162')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_text` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_text` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2898, 3028, 2510, 2446)) AND (t_d.attribute_id IN ('76')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_decimal` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_decimal` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2898, 3028, 2510, 2446)) AND (t_d.attribute_id IN ('78', '119')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_datetime` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_datetime` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2898, 3028, 2510, 2446)) AND (t_d.attribute_id IN ('79', '80', '94', '95')) AND (t_d.store_id = IFNULL(t_s.store_id, 0))
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `url_rewrite`.*, `relation`.`category_id`, `relation`.`product_id` FROM `url_rewrite`
+ LEFT JOIN `catalog_url_rewrite_product_category` AS `relation` ON url_rewrite.url_rewrite_id = relation.url_rewrite_id WHERE (url_rewrite.entity_type IN ('product')) AND (url_rewrite.entity_id IN ('2898', '3028', '2510', '2446')) AND (url_rewrite.store_id IN (1)) AND (url_rewrite.is_autogenerated IN (1)) AND (relation.category_id IS NULL)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT COUNT(DISTINCT e.entity_id) FROM `catalog_product_entity` AS `e`
+ INNER JOIN `cataloginventory_stock_item` AS `at_inventory_in_stock` ON (at_inventory_in_stock.`product_id`=e.entity_id) AND ((at_inventory_in_stock.use_config_manage_stock = 0 AND at_inventory_in_stock.manage_stock=1 AND at_inventory_in_stock.is_in_stock=1) OR (at_inventory_in_stock.use_config_manage_stock = 0 AND at_inventory_in_stock.manage_stock=0) OR (at_inventory_in_stock.use_config_manage_stock = 1 AND at_inventory_in_stock.is_in_stock=1))
+ INNER JOIN `catalog_product_index_price` AS `price_index` ON price_index.entity_id = e.entity_id AND price_index.customer_group_id = 0 AND price_index.website_id = '1'
+ INNER JOIN `catalog_category_product_index_store1` AS `cat_index` ON cat_index.product_id=e.entity_id AND cat_index.store_id=1 AND cat_index.visibility IN(2, 4) AND cat_index.category_id=2
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id
+ INNER JOIN `catalog_product_link` AS `links` ON links.linked_product_id = e.entity_id AND links.link_type_id = 1
+ INNER JOIN `catalog_product_entity` AS `product_entity_table` ON links.product_id = product_entity_table.entity_id WHERE (stock_status_index.stock_status = 1) AND (links.product_id in ('2694')) AND (`e`.`entity_id` != '2694')
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `catalog_product_super_attribute` AS `main_table` WHERE (((((`product_id` = '2898'))))) ORDER BY position  ASC
+
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `def`.*, IF(store.use_default IS NULL, def.use_default, store.use_default) AS `use_default`, IF(store.value IS NULL, def.value, store.value) AS `label` FROM `catalog_product_super_attribute_label` AS `def`
+ LEFT JOIN `catalog_product_super_attribute_label` AS `store` ON store.product_super_attribute_id = def.product_super_attribute_id AND store.store_id = 1 WHERE (def.product_super_attribute_id IN (419, 420)) AND (def.store_id = 0)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `entity`.`sku`, `product_entity`.`entity_id` AS `product_id`, `attribute`.`attribute_code`, `entity_value`.`value` AS `value_index`, `attribute_label`.`value` AS `super_attribute_label` FROM `catalog_product_super_attribute` AS `super_attribute`
+ INNER JOIN `catalog_product_entity` AS `product_entity` ON product_entity.entity_id = super_attribute.product_id
+ INNER JOIN `catalog_product_super_link` AS `product_link` ON product_link.parent_id = super_attribute.product_id
+ INNER JOIN `eav_attribute` AS `attribute` ON attribute.attribute_id = super_attribute.attribute_id
+ INNER JOIN `catalog_product_entity` AS `entity` ON entity.entity_id = product_link.product_id
+ INNER JOIN `catalog_product_entity_int` AS `entity_value` ON entity_value.attribute_id = super_attribute.attribute_id AND entity_value.store_id = 0 AND entity_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_super_attribute_label` AS `attribute_label` ON super_attribute.product_super_attribute_id = attribute_label.product_super_attribute_id AND attribute_label.store_id = 0
+ LEFT JOIN `eav_attribute_option` AS `attribute_option` ON attribute_option.option_id = entity_value.value WHERE (super_attribute.product_id = 2898) AND (attribute.attribute_id = '143') ORDER BY `attribute_option`.`sort_order` ASC
+
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `entity`.`sku`, `product_entity`.`entity_id` AS `product_id`, `attribute`.`attribute_code`, `entity_value`.`value` AS `value_index`, `attribute_label`.`value` AS `super_attribute_label` FROM `catalog_product_super_attribute` AS `super_attribute`
+ INNER JOIN `catalog_product_entity` AS `product_entity` ON product_entity.entity_id = super_attribute.product_id
+ INNER JOIN `catalog_product_super_link` AS `product_link` ON product_link.parent_id = super_attribute.product_id
+ INNER JOIN `eav_attribute` AS `attribute` ON attribute.attribute_id = super_attribute.attribute_id
+ INNER JOIN `catalog_product_entity` AS `entity` ON entity.entity_id = product_link.product_id
+ INNER JOIN `catalog_product_entity_int` AS `entity_value` ON entity_value.attribute_id = super_attribute.attribute_id AND entity_value.store_id = 0 AND entity_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_super_attribute_label` AS `attribute_label` ON super_attribute.product_super_attribute_id = attribute_label.product_super_attribute_id AND attribute_label.store_id = 0
+ LEFT JOIN `eav_attribute_option` AS `attribute_option` ON attribute_option.option_id = entity_value.value WHERE (super_attribute.product_id = 2898) AND (attribute.attribute_id = '93') ORDER BY `attribute_option`.`sort_order` ASC
+
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT COUNT(DISTINCT e.entity_id) FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id
+ INNER JOIN `catalog_product_website` AS `product_website` ON product_website.product_id = e.entity_id AND product_website.website_id = 1
+ INNER JOIN `catalog_product_entity_int` AS `at_status_default` ON (`at_status_default`.`entity_id` = `e`.`entity_id`) AND (`at_status_default`.`attribute_id` = '97') AND `at_status_default`.`store_id` = 0
+ LEFT JOIN `catalog_product_entity_int` AS `at_status` ON (`at_status`.`entity_id` = `e`.`entity_id`) AND (`at_status`.`attribute_id` = '97') AND (`at_status`.`store_id` = 1)
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id WHERE (IF(at_status.value_id > 0, at_status.value, at_status_default.value) = '1') AND (stock_status_index.stock_status = 1) AND (link_table.parent_id in ('2898'))
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: (SELECT `child`.`entity_id` FROM `catalog_product_entity` AS `parent`
+ INNER JOIN `catalog_product_relation` AS `link` ON link.parent_id = parent.entity_id
+ INNER JOIN `catalog_product_entity` AS `child` ON child.entity_id = link.child_id
+ INNER JOIN `catalog_product_index_price` AS `t` ON t.entity_id = child.entity_id
+ LEFT JOIN `catalog_product_entity_int` AS `status_global_attr` ON status_global_attr.entity_id = child.entity_id AND status_global_attr.attribute_id = 97 AND status_global_attr.store_id = 0
+ LEFT JOIN `catalog_product_entity_int` AS `status_attr` ON status_attr.entity_id = child.entity_id AND status_attr.attribute_id = 97 AND status_attr.store_id = 1
+ INNER JOIN `cataloginventory_stock_status` AS `stock` ON stock.product_id = child.entity_id WHERE (parent.entity_id = '2898') AND (t.website_id = '1') AND (t.customer_group_id = 0) AND (IFNULL(status_attr.value, status_global_attr.value) = 1) AND (stock.stock_status = 1) ORDER BY `t`.`min_price` ASC, `child`.`entity_id` ASC
+ LIMIT 1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `e`.*, `stock_status_index`.`stock_status` AS `is_salable` FROM `catalog_product_entity` AS `e`
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id WHERE (`e`.`entity_id` IN('2894')) AND (stock_status_index.stock_status = 1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_decimal` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_decimal` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2894)) AND (t_d.attribute_id IN ('77', '78')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_datetime` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_datetime` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2894)) AND (t_d.attribute_id IN ('79', '80')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_int` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_int` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2894)) AND (t_d.attribute_id IN ('134')) AND (t_d.store_id = IFNULL(t_s.store_id, 0))
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity_tier_price`.`value_id` AS `price_id`, `catalog_product_entity_tier_price`.`website_id`, `catalog_product_entity_tier_price`.`all_groups`, `catalog_product_entity_tier_price`.`customer_group_id` AS `cust_group`, `catalog_product_entity_tier_price`.`value` AS `price`, `catalog_product_entity_tier_price`.`qty` AS `price_qty`, `catalog_product_entity_tier_price`.`percentage_value` FROM `catalog_product_entity_tier_price` WHERE (website_id = 0) AND (entity_id = '2894') ORDER BY `qty` ASC
+
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `catalogrule_product_price`.`product_id`, `catalogrule_product_price`.`rule_price` FROM `catalogrule_product_price` WHERE (rule_date = '2021-01-12') AND (website_id = '1') AND (customer_group_id = 0) AND (product_id IN('2894'))
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT COUNT(DISTINCT e.entity_id) FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id WHERE (((`e`.`required_options` != 1) OR (`e`.`required_options` IS NULL))) AND (link_table.parent_id in ('2898'))
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `e`.*, `link_table`.`parent_id`, `stock_status_index`.`stock_status` AS `is_salable`, `catalog_rule`.`rule_price` AS `catalog_rule_price` FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id
+ LEFT JOIN `catalogrule_product_price` AS `catalog_rule` ON catalog_rule.product_id = `e`.`entity_id` AND catalog_rule.website_id = '1' AND catalog_rule.customer_group_id = 0 AND catalog_rule.rule_date = '2021-01-12' WHERE (((`e`.`required_options` != 1) OR (`e`.`required_options` IS NULL))) AND (link_table.parent_id in ('2898')) AND (stock_status_index.stock_status = 1) AND (link_table.parent_id in ('2898'))
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_varchar` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_varchar` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2894, 2895, 2896, 2897)) AND (t_d.attribute_id IN ('87', '73', '88', '89', '109', '110', '111', '120', '128', '162')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_int` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_int` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2894, 2895, 2896, 2897)) AND (t_d.attribute_id IN ('143', '93', '97', '121', '123', '124', '125', '130', '133', '134', '99')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_text` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_text` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2894, 2895, 2896, 2897)) AND (t_d.attribute_id IN ('76')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_decimal` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_decimal` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2894, 2895, 2896, 2897)) AND (t_d.attribute_id IN ('77', '78', '119', '82')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_datetime` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_datetime` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2894, 2895, 2896, 2897)) AND (t_d.attribute_id IN ('79', '80', '94', '95')) AND (t_d.store_id = IFNULL(t_s.store_id, 0))
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `main`.`value_id`, `main`.`value` AS `file`, `main`.`media_type`, `entity`.`entity_id`, IFNULL(`value`.`label`, `default_value`.`label`) AS `label`, IFNULL(`value`.`position`, `default_value`.`position`) AS `position`, IFNULL(`value`.`disabled`, `default_value`.`disabled`) AS `disabled`, `default_value`.`label` AS `label_default`, `default_value`.`position` AS `position_default`, `default_value`.`disabled` AS `disabled_default`, IFNULL(`value_video`.`provider`, `default_value_video`.`provider`) AS `video_provider`, IFNULL(`value_video`.`url`, `default_value_video`.`url`) AS `video_url`, IFNULL(`value_video`.`title`, `default_value_video`.`title`) AS `video_title`, IFNULL(`value_video`.`description`, `default_value_video`.`description`) AS `video_description`, IFNULL(`value_video`.`metadata`, `default_value_video`.`metadata`) AS `video_metadata`, `default_value_video`.`provider` AS `video_provider_default`, `default_value_video`.`url` AS `video_url_default`, `default_value_video`.`title` AS `video_title_default`, `default_value_video`.`description` AS `video_description_default`, `default_value_video`.`metadata` AS `video_metadata_default` FROM `catalog_product_entity_media_gallery` AS `main`
+ INNER JOIN `catalog_product_entity_media_gallery_value_to_entity` AS `entity` ON main.value_id = entity.value_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value` AS `value` ON main.value_id = value.value_id AND value.store_id = 1 AND value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value` AS `default_value` ON main.value_id = default_value.value_id AND default_value.store_id = 0 AND default_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value_video` AS `value_video` ON value.value_id = value_video.value_id AND value.store_id = value_video.store_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value_video` AS `default_value_video` ON default_value.value_id = default_value_video.value_id AND default_value.store_id = default_value_video.store_id WHERE (main.attribute_id = '90') AND (main.disabled = 0) AND (entity.entity_id IN (2894, 2895, 2896, 2897))
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity_tier_price`.`value_id` AS `price_id`, `catalog_product_entity_tier_price`.`website_id`, `catalog_product_entity_tier_price`.`all_groups`, `catalog_product_entity_tier_price`.`customer_group_id` AS `cust_group`, `catalog_product_entity_tier_price`.`value` AS `price`, `catalog_product_entity_tier_price`.`qty` AS `price_qty`, `catalog_product_entity_tier_price`.`percentage_value`, `catalog_product_entity_tier_price`.`entity_id` AS `product_id` FROM `catalog_product_entity_tier_price` WHERE (website_id = 0) AND (entity_id IN('2894', '2895', '2896', '2897')) ORDER BY `qty` ASC
+
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MSH02-32-Black'))
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2894')
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MSH02-33-Black'))
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2895')
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MSH02-34-Black'))
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2896')
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MSH02-36-Black'))
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2897')
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `e`.`entity_id` FROM `catalog_product_super_link` AS `l`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = l.parent_id WHERE (l.product_id IN('2898'))
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `tbl_selection`.`product_id`, `tbl_selection`.`parent_product_id`, `tbl_selection`.`option_id`, `parent`.*, `tbl_option`.`required` FROM `catalog_product_bundle_selection` AS `tbl_selection`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = tbl_selection.product_id AND e.required_options=0
+ INNER JOIN `catalog_product_entity` AS `parent` ON tbl_selection.parent_product_id = parent.entity_id
+ INNER JOIN `catalog_product_bundle_option` AS `tbl_option` ON tbl_option.option_id = tbl_selection.option_id WHERE (parent.entity_id = :parent_id)
+BIND: array (
+  ':parent_id' => '2898',
+)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity_tier_price`.`value_id` AS `price_id`, `catalog_product_entity_tier_price`.`website_id`, `catalog_product_entity_tier_price`.`all_groups`, `catalog_product_entity_tier_price`.`customer_group_id` AS `cust_group`, `catalog_product_entity_tier_price`.`value` AS `price`, `catalog_product_entity_tier_price`.`qty` AS `price_qty`, `catalog_product_entity_tier_price`.`percentage_value` FROM `catalog_product_entity_tier_price` WHERE (website_id = 0) AND (entity_id = '2898') ORDER BY `qty` ASC
+
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `e`.`entity_id` FROM `catalog_product_super_link` AS `l`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = l.parent_id WHERE (l.product_id IN('2898'))
+
+
+
+
+## 2021-01-12 17:55:54
+## 9248 ## QUERY
+SQL: SELECT `tbl_selection`.`product_id`, `tbl_selection`.`parent_product_id`, `tbl_selection`.`option_id`, `parent`.*, `tbl_option`.`required` FROM `catalog_product_bundle_selection` AS `tbl_selection`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = tbl_selection.product_id AND e.required_options=0
+ INNER JOIN `catalog_product_entity` AS `parent` ON tbl_selection.parent_product_id = parent.entity_id
+ INNER JOIN `catalog_product_bundle_option` AS `tbl_option` ON tbl_option.option_id = tbl_selection.option_id WHERE (parent.entity_id = :parent_id)
+BIND: array (
+  ':parent_id' => '2898',
+)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `catalog_product_super_attribute` AS `main_table` WHERE (((((`product_id` = '3028'))))) ORDER BY position  ASC
+
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `def`.*, IF(store.use_default IS NULL, def.use_default, store.use_default) AS `use_default`, IF(store.value IS NULL, def.value, store.value) AS `label` FROM `catalog_product_super_attribute_label` AS `def`
+ LEFT JOIN `catalog_product_super_attribute_label` AS `store` ON store.product_super_attribute_id = def.product_super_attribute_id AND store.store_id = 1 WHERE (def.product_super_attribute_id IN (439, 440)) AND (def.store_id = 0)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `entity`.`sku`, `product_entity`.`entity_id` AS `product_id`, `attribute`.`attribute_code`, `entity_value`.`value` AS `value_index`, `attribute_label`.`value` AS `super_attribute_label` FROM `catalog_product_super_attribute` AS `super_attribute`
+ INNER JOIN `catalog_product_entity` AS `product_entity` ON product_entity.entity_id = super_attribute.product_id
+ INNER JOIN `catalog_product_super_link` AS `product_link` ON product_link.parent_id = super_attribute.product_id
+ INNER JOIN `eav_attribute` AS `attribute` ON attribute.attribute_id = super_attribute.attribute_id
+ INNER JOIN `catalog_product_entity` AS `entity` ON entity.entity_id = product_link.product_id
+ INNER JOIN `catalog_product_entity_int` AS `entity_value` ON entity_value.attribute_id = super_attribute.attribute_id AND entity_value.store_id = 0 AND entity_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_super_attribute_label` AS `attribute_label` ON super_attribute.product_super_attribute_id = attribute_label.product_super_attribute_id AND attribute_label.store_id = 0
+ LEFT JOIN `eav_attribute_option` AS `attribute_option` ON attribute_option.option_id = entity_value.value WHERE (super_attribute.product_id = 3028) AND (attribute.attribute_id = '143') ORDER BY `attribute_option`.`sort_order` ASC
+
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `entity`.`sku`, `product_entity`.`entity_id` AS `product_id`, `attribute`.`attribute_code`, `entity_value`.`value` AS `value_index`, `attribute_label`.`value` AS `super_attribute_label` FROM `catalog_product_super_attribute` AS `super_attribute`
+ INNER JOIN `catalog_product_entity` AS `product_entity` ON product_entity.entity_id = super_attribute.product_id
+ INNER JOIN `catalog_product_super_link` AS `product_link` ON product_link.parent_id = super_attribute.product_id
+ INNER JOIN `eav_attribute` AS `attribute` ON attribute.attribute_id = super_attribute.attribute_id
+ INNER JOIN `catalog_product_entity` AS `entity` ON entity.entity_id = product_link.product_id
+ INNER JOIN `catalog_product_entity_int` AS `entity_value` ON entity_value.attribute_id = super_attribute.attribute_id AND entity_value.store_id = 0 AND entity_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_super_attribute_label` AS `attribute_label` ON super_attribute.product_super_attribute_id = attribute_label.product_super_attribute_id AND attribute_label.store_id = 0
+ LEFT JOIN `eav_attribute_option` AS `attribute_option` ON attribute_option.option_id = entity_value.value WHERE (super_attribute.product_id = 3028) AND (attribute.attribute_id = '93') ORDER BY `attribute_option`.`sort_order` ASC
+
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT COUNT(DISTINCT e.entity_id) FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id
+ INNER JOIN `catalog_product_website` AS `product_website` ON product_website.product_id = e.entity_id AND product_website.website_id = 1
+ INNER JOIN `catalog_product_entity_int` AS `at_status_default` ON (`at_status_default`.`entity_id` = `e`.`entity_id`) AND (`at_status_default`.`attribute_id` = '97') AND `at_status_default`.`store_id` = 0
+ LEFT JOIN `catalog_product_entity_int` AS `at_status` ON (`at_status`.`entity_id` = `e`.`entity_id`) AND (`at_status`.`attribute_id` = '97') AND (`at_status`.`store_id` = 1)
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id WHERE (IF(at_status.value_id > 0, at_status.value, at_status_default.value) = '1') AND (stock_status_index.stock_status = 1) AND (link_table.parent_id in ('3028'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: (SELECT `child`.`entity_id` FROM `catalog_product_entity` AS `parent`
+ INNER JOIN `catalog_product_relation` AS `link` ON link.parent_id = parent.entity_id
+ INNER JOIN `catalog_product_entity` AS `child` ON child.entity_id = link.child_id
+ INNER JOIN `catalog_product_index_price` AS `t` ON t.entity_id = child.entity_id
+ LEFT JOIN `catalog_product_entity_int` AS `status_global_attr` ON status_global_attr.entity_id = child.entity_id AND status_global_attr.attribute_id = 97 AND status_global_attr.store_id = 0
+ LEFT JOIN `catalog_product_entity_int` AS `status_attr` ON status_attr.entity_id = child.entity_id AND status_attr.attribute_id = 97 AND status_attr.store_id = 1
+ INNER JOIN `cataloginventory_stock_status` AS `stock` ON stock.product_id = child.entity_id WHERE (parent.entity_id = '3028') AND (t.website_id = '1') AND (t.customer_group_id = 0) AND (IFNULL(status_attr.value, status_global_attr.value) = 1) AND (stock.stock_status = 1) ORDER BY `t`.`min_price` ASC, `child`.`entity_id` ASC
+ LIMIT 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `e`.*, `stock_status_index`.`stock_status` AS `is_salable` FROM `catalog_product_entity` AS `e`
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id WHERE (`e`.`entity_id` IN('3016')) AND (stock_status_index.stock_status = 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_decimal` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_decimal` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (3016)) AND (t_d.attribute_id IN ('77', '78')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_datetime` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_datetime` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (3016)) AND (t_d.attribute_id IN ('79', '80')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_int` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_int` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (3016)) AND (t_d.attribute_id IN ('134')) AND (t_d.store_id = IFNULL(t_s.store_id, 0))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity_tier_price`.`value_id` AS `price_id`, `catalog_product_entity_tier_price`.`website_id`, `catalog_product_entity_tier_price`.`all_groups`, `catalog_product_entity_tier_price`.`customer_group_id` AS `cust_group`, `catalog_product_entity_tier_price`.`value` AS `price`, `catalog_product_entity_tier_price`.`qty` AS `price_qty`, `catalog_product_entity_tier_price`.`percentage_value` FROM `catalog_product_entity_tier_price` WHERE (website_id = 0) AND (entity_id = '3016') ORDER BY `qty` ASC
+
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalogrule_product_price`.`product_id`, `catalogrule_product_price`.`rule_price` FROM `catalogrule_product_price` WHERE (rule_date = '2021-01-12') AND (website_id = '1') AND (customer_group_id = 0) AND (product_id IN('3016'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT COUNT(DISTINCT e.entity_id) FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id WHERE (((`e`.`required_options` != 1) OR (`e`.`required_options` IS NULL))) AND (link_table.parent_id in ('3028'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `e`.*, `link_table`.`parent_id`, `stock_status_index`.`stock_status` AS `is_salable`, `catalog_rule`.`rule_price` AS `catalog_rule_price` FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id
+ LEFT JOIN `catalogrule_product_price` AS `catalog_rule` ON catalog_rule.product_id = `e`.`entity_id` AND catalog_rule.website_id = '1' AND catalog_rule.customer_group_id = 0 AND catalog_rule.rule_date = '2021-01-12' WHERE (((`e`.`required_options` != 1) OR (`e`.`required_options` IS NULL))) AND (link_table.parent_id in ('3028')) AND (stock_status_index.stock_status = 1) AND (link_table.parent_id in ('3028'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_varchar` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_varchar` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (3016, 3017, 3018, 3019, 3020, 3021, 3022, 3023, 3024, 3025, 3026, 3027)) AND (t_d.attribute_id IN ('87', '73', '88', '89', '109', '110', '111', '120', '128', '162')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_int` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_int` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (3016, 3017, 3018, 3019, 3020, 3021, 3022, 3023, 3024, 3025, 3026, 3027)) AND (t_d.attribute_id IN ('143', '93', '97', '121', '123', '124', '125', '130', '133', '134', '99')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_text` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_text` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (3016, 3017, 3018, 3019, 3020, 3021, 3022, 3023, 3024, 3025, 3026, 3027)) AND (t_d.attribute_id IN ('76')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_decimal` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_decimal` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (3016, 3017, 3018, 3019, 3020, 3021, 3022, 3023, 3024, 3025, 3026, 3027)) AND (t_d.attribute_id IN ('77', '78', '119', '82')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_datetime` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_datetime` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (3016, 3017, 3018, 3019, 3020, 3021, 3022, 3023, 3024, 3025, 3026, 3027)) AND (t_d.attribute_id IN ('79', '80', '94', '95')) AND (t_d.store_id = IFNULL(t_s.store_id, 0))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `main`.`value_id`, `main`.`value` AS `file`, `main`.`media_type`, `entity`.`entity_id`, IFNULL(`value`.`label`, `default_value`.`label`) AS `label`, IFNULL(`value`.`position`, `default_value`.`position`) AS `position`, IFNULL(`value`.`disabled`, `default_value`.`disabled`) AS `disabled`, `default_value`.`label` AS `label_default`, `default_value`.`position` AS `position_default`, `default_value`.`disabled` AS `disabled_default`, IFNULL(`value_video`.`provider`, `default_value_video`.`provider`) AS `video_provider`, IFNULL(`value_video`.`url`, `default_value_video`.`url`) AS `video_url`, IFNULL(`value_video`.`title`, `default_value_video`.`title`) AS `video_title`, IFNULL(`value_video`.`description`, `default_value_video`.`description`) AS `video_description`, IFNULL(`value_video`.`metadata`, `default_value_video`.`metadata`) AS `video_metadata`, `default_value_video`.`provider` AS `video_provider_default`, `default_value_video`.`url` AS `video_url_default`, `default_value_video`.`title` AS `video_title_default`, `default_value_video`.`description` AS `video_description_default`, `default_value_video`.`metadata` AS `video_metadata_default` FROM `catalog_product_entity_media_gallery` AS `main`
+ INNER JOIN `catalog_product_entity_media_gallery_value_to_entity` AS `entity` ON main.value_id = entity.value_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value` AS `value` ON main.value_id = value.value_id AND value.store_id = 1 AND value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value` AS `default_value` ON main.value_id = default_value.value_id AND default_value.store_id = 0 AND default_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value_video` AS `value_video` ON value.value_id = value_video.value_id AND value.store_id = value_video.store_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value_video` AS `default_value_video` ON default_value.value_id = default_value_video.value_id AND default_value.store_id = default_value_video.store_id WHERE (main.attribute_id = '90') AND (main.disabled = 0) AND (entity.entity_id IN (3016, 3017, 3018, 3019, 3020, 3021, 3022, 3023, 3024, 3025, 3026, 3027))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity_tier_price`.`value_id` AS `price_id`, `catalog_product_entity_tier_price`.`website_id`, `catalog_product_entity_tier_price`.`all_groups`, `catalog_product_entity_tier_price`.`customer_group_id` AS `cust_group`, `catalog_product_entity_tier_price`.`value` AS `price`, `catalog_product_entity_tier_price`.`qty` AS `price_qty`, `catalog_product_entity_tier_price`.`percentage_value`, `catalog_product_entity_tier_price`.`entity_id` AS `product_id` FROM `catalog_product_entity_tier_price` WHERE (website_id = 0) AND (entity_id IN('3016', '3017', '3018', '3019', '3020', '3021', '3022', '3023', '3024', '3025', '3026', '3027')) ORDER BY `qty` ASC
+
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MSH12-32-Black'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '3016')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MSH12-32-Gray'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '3017')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MSH12-32-Red'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '3018')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MSH12-33-Black'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '3019')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MSH12-33-Gray'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '3020')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MSH12-33-Red'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '3021')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MSH12-34-Black'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '3022')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MSH12-34-Gray'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '3023')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MSH12-34-Red'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '3024')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MSH12-36-Black'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '3025')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MSH12-36-Gray'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '3026')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MSH12-36-Red'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '3027')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `e`.`entity_id` FROM `catalog_product_super_link` AS `l`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = l.parent_id WHERE (l.product_id IN('3028'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `tbl_selection`.`product_id`, `tbl_selection`.`parent_product_id`, `tbl_selection`.`option_id`, `parent`.*, `tbl_option`.`required` FROM `catalog_product_bundle_selection` AS `tbl_selection`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = tbl_selection.product_id AND e.required_options=0
+ INNER JOIN `catalog_product_entity` AS `parent` ON tbl_selection.parent_product_id = parent.entity_id
+ INNER JOIN `catalog_product_bundle_option` AS `tbl_option` ON tbl_option.option_id = tbl_selection.option_id WHERE (parent.entity_id = :parent_id)
+BIND: array (
+  ':parent_id' => '3028',
+)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity_tier_price`.`value_id` AS `price_id`, `catalog_product_entity_tier_price`.`website_id`, `catalog_product_entity_tier_price`.`all_groups`, `catalog_product_entity_tier_price`.`customer_group_id` AS `cust_group`, `catalog_product_entity_tier_price`.`value` AS `price`, `catalog_product_entity_tier_price`.`qty` AS `price_qty`, `catalog_product_entity_tier_price`.`percentage_value` FROM `catalog_product_entity_tier_price` WHERE (website_id = 0) AND (entity_id = '3028') ORDER BY `qty` ASC
+
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `e`.`entity_id` FROM `catalog_product_super_link` AS `l`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = l.parent_id WHERE (l.product_id IN('3028'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `tbl_selection`.`product_id`, `tbl_selection`.`parent_product_id`, `tbl_selection`.`option_id`, `parent`.*, `tbl_option`.`required` FROM `catalog_product_bundle_selection` AS `tbl_selection`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = tbl_selection.product_id AND e.required_options=0
+ INNER JOIN `catalog_product_entity` AS `parent` ON tbl_selection.parent_product_id = parent.entity_id
+ INNER JOIN `catalog_product_bundle_option` AS `tbl_option` ON tbl_option.option_id = tbl_selection.option_id WHERE (parent.entity_id = :parent_id)
+BIND: array (
+  ':parent_id' => '3028',
+)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `catalog_product_super_attribute` AS `main_table` WHERE (((((`product_id` = '2510'))))) ORDER BY position  ASC
+
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `def`.*, IF(store.use_default IS NULL, def.use_default, store.use_default) AS `use_default`, IF(store.value IS NULL, def.value, store.value) AS `label` FROM `catalog_product_super_attribute_label` AS `def`
+ LEFT JOIN `catalog_product_super_attribute_label` AS `store` ON store.product_super_attribute_id = def.product_super_attribute_id AND store.store_id = 1 WHERE (def.product_super_attribute_id IN (353, 354)) AND (def.store_id = 0)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `entity`.`sku`, `product_entity`.`entity_id` AS `product_id`, `attribute`.`attribute_code`, `entity_value`.`value` AS `value_index`, `attribute_label`.`value` AS `super_attribute_label` FROM `catalog_product_super_attribute` AS `super_attribute`
+ INNER JOIN `catalog_product_entity` AS `product_entity` ON product_entity.entity_id = super_attribute.product_id
+ INNER JOIN `catalog_product_super_link` AS `product_link` ON product_link.parent_id = super_attribute.product_id
+ INNER JOIN `eav_attribute` AS `attribute` ON attribute.attribute_id = super_attribute.attribute_id
+ INNER JOIN `catalog_product_entity` AS `entity` ON entity.entity_id = product_link.product_id
+ INNER JOIN `catalog_product_entity_int` AS `entity_value` ON entity_value.attribute_id = super_attribute.attribute_id AND entity_value.store_id = 0 AND entity_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_super_attribute_label` AS `attribute_label` ON super_attribute.product_super_attribute_id = attribute_label.product_super_attribute_id AND attribute_label.store_id = 0
+ LEFT JOIN `eav_attribute_option` AS `attribute_option` ON attribute_option.option_id = entity_value.value WHERE (super_attribute.product_id = 2510) AND (attribute.attribute_id = '143') ORDER BY `attribute_option`.`sort_order` ASC
+
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `entity`.`sku`, `product_entity`.`entity_id` AS `product_id`, `attribute`.`attribute_code`, `entity_value`.`value` AS `value_index`, `attribute_label`.`value` AS `super_attribute_label` FROM `catalog_product_super_attribute` AS `super_attribute`
+ INNER JOIN `catalog_product_entity` AS `product_entity` ON product_entity.entity_id = super_attribute.product_id
+ INNER JOIN `catalog_product_super_link` AS `product_link` ON product_link.parent_id = super_attribute.product_id
+ INNER JOIN `eav_attribute` AS `attribute` ON attribute.attribute_id = super_attribute.attribute_id
+ INNER JOIN `catalog_product_entity` AS `entity` ON entity.entity_id = product_link.product_id
+ INNER JOIN `catalog_product_entity_int` AS `entity_value` ON entity_value.attribute_id = super_attribute.attribute_id AND entity_value.store_id = 0 AND entity_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_super_attribute_label` AS `attribute_label` ON super_attribute.product_super_attribute_id = attribute_label.product_super_attribute_id AND attribute_label.store_id = 0
+ LEFT JOIN `eav_attribute_option` AS `attribute_option` ON attribute_option.option_id = entity_value.value WHERE (super_attribute.product_id = 2510) AND (attribute.attribute_id = '93') ORDER BY `attribute_option`.`sort_order` ASC
+
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT COUNT(DISTINCT e.entity_id) FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id
+ INNER JOIN `catalog_product_website` AS `product_website` ON product_website.product_id = e.entity_id AND product_website.website_id = 1
+ INNER JOIN `catalog_product_entity_int` AS `at_status_default` ON (`at_status_default`.`entity_id` = `e`.`entity_id`) AND (`at_status_default`.`attribute_id` = '97') AND `at_status_default`.`store_id` = 0
+ LEFT JOIN `catalog_product_entity_int` AS `at_status` ON (`at_status`.`entity_id` = `e`.`entity_id`) AND (`at_status`.`attribute_id` = '97') AND (`at_status`.`store_id` = 1)
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id WHERE (IF(at_status.value_id > 0, at_status.value, at_status_default.value) = '1') AND (stock_status_index.stock_status = 1) AND (link_table.parent_id in ('2510'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: (SELECT `child`.`entity_id` FROM `catalog_product_entity` AS `parent`
+ INNER JOIN `catalog_product_relation` AS `link` ON link.parent_id = parent.entity_id
+ INNER JOIN `catalog_product_entity` AS `child` ON child.entity_id = link.child_id
+ INNER JOIN `catalog_product_index_price` AS `t` ON t.entity_id = child.entity_id
+ LEFT JOIN `catalog_product_entity_int` AS `status_global_attr` ON status_global_attr.entity_id = child.entity_id AND status_global_attr.attribute_id = 97 AND status_global_attr.store_id = 0
+ LEFT JOIN `catalog_product_entity_int` AS `status_attr` ON status_attr.entity_id = child.entity_id AND status_attr.attribute_id = 97 AND status_attr.store_id = 1
+ INNER JOIN `cataloginventory_stock_status` AS `stock` ON stock.product_id = child.entity_id WHERE (parent.entity_id = '2510') AND (t.website_id = '1') AND (t.customer_group_id = 0) AND (IFNULL(status_attr.value, status_global_attr.value) = 1) AND (stock.stock_status = 1) ORDER BY `t`.`min_price` ASC, `child`.`entity_id` ASC
+ LIMIT 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `e`.*, `stock_status_index`.`stock_status` AS `is_salable` FROM `catalog_product_entity` AS `e`
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id WHERE (`e`.`entity_id` IN('2495')) AND (stock_status_index.stock_status = 1)
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_decimal` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_decimal` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2495)) AND (t_d.attribute_id IN ('77', '78')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_datetime` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_datetime` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2495)) AND (t_d.attribute_id IN ('79', '80')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_int` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_int` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2495)) AND (t_d.attribute_id IN ('134')) AND (t_d.store_id = IFNULL(t_s.store_id, 0))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity_tier_price`.`value_id` AS `price_id`, `catalog_product_entity_tier_price`.`website_id`, `catalog_product_entity_tier_price`.`all_groups`, `catalog_product_entity_tier_price`.`customer_group_id` AS `cust_group`, `catalog_product_entity_tier_price`.`value` AS `price`, `catalog_product_entity_tier_price`.`qty` AS `price_qty`, `catalog_product_entity_tier_price`.`percentage_value` FROM `catalog_product_entity_tier_price` WHERE (website_id = 0) AND (entity_id = '2495') ORDER BY `qty` ASC
+
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `catalogrule_product_price`.`product_id`, `catalogrule_product_price`.`rule_price` FROM `catalogrule_product_price` WHERE (rule_date = '2021-01-12') AND (website_id = '1') AND (customer_group_id = 0) AND (product_id IN('2495'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT COUNT(DISTINCT e.entity_id) FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id WHERE (((`e`.`required_options` != 1) OR (`e`.`required_options` IS NULL))) AND (link_table.parent_id in ('2510'))
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:55
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `e`.*, `link_table`.`parent_id`, `stock_status_index`.`stock_status` AS `is_salable`, `catalog_rule`.`rule_price` AS `catalog_rule_price` FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id
+ LEFT JOIN `catalogrule_product_price` AS `catalog_rule` ON catalog_rule.product_id = `e`.`entity_id` AND catalog_rule.website_id = '1' AND catalog_rule.customer_group_id = 0 AND catalog_rule.rule_date = '2021-01-12' WHERE (((`e`.`required_options` != 1) OR (`e`.`required_options` IS NULL))) AND (link_table.parent_id in ('2510')) AND (stock_status_index.stock_status = 1) AND (link_table.parent_id in ('2510'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_varchar` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_varchar` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2495, 2496, 2497, 2498, 2499, 2500, 2501, 2502, 2503, 2504, 2505, 2506, 2507, 2508, 2509)) AND (t_d.attribute_id IN ('87', '73', '88', '89', '109', '110', '111', '120', '128', '162')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_int` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_int` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2495, 2496, 2497, 2498, 2499, 2500, 2501, 2502, 2503, 2504, 2505, 2506, 2507, 2508, 2509)) AND (t_d.attribute_id IN ('143', '93', '97', '121', '123', '124', '125', '130', '133', '134', '99')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_text` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_text` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2495, 2496, 2497, 2498, 2499, 2500, 2501, 2502, 2503, 2504, 2505, 2506, 2507, 2508, 2509)) AND (t_d.attribute_id IN ('76')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_decimal` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_decimal` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2495, 2496, 2497, 2498, 2499, 2500, 2501, 2502, 2503, 2504, 2505, 2506, 2507, 2508, 2509)) AND (t_d.attribute_id IN ('77', '78', '119', '82')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_datetime` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_datetime` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2495, 2496, 2497, 2498, 2499, 2500, 2501, 2502, 2503, 2504, 2505, 2506, 2507, 2508, 2509)) AND (t_d.attribute_id IN ('79', '80', '94', '95')) AND (t_d.store_id = IFNULL(t_s.store_id, 0))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `main`.`value_id`, `main`.`value` AS `file`, `main`.`media_type`, `entity`.`entity_id`, IFNULL(`value`.`label`, `default_value`.`label`) AS `label`, IFNULL(`value`.`position`, `default_value`.`position`) AS `position`, IFNULL(`value`.`disabled`, `default_value`.`disabled`) AS `disabled`, `default_value`.`label` AS `label_default`, `default_value`.`position` AS `position_default`, `default_value`.`disabled` AS `disabled_default`, IFNULL(`value_video`.`provider`, `default_value_video`.`provider`) AS `video_provider`, IFNULL(`value_video`.`url`, `default_value_video`.`url`) AS `video_url`, IFNULL(`value_video`.`title`, `default_value_video`.`title`) AS `video_title`, IFNULL(`value_video`.`description`, `default_value_video`.`description`) AS `video_description`, IFNULL(`value_video`.`metadata`, `default_value_video`.`metadata`) AS `video_metadata`, `default_value_video`.`provider` AS `video_provider_default`, `default_value_video`.`url` AS `video_url_default`, `default_value_video`.`title` AS `video_title_default`, `default_value_video`.`description` AS `video_description_default`, `default_value_video`.`metadata` AS `video_metadata_default` FROM `catalog_product_entity_media_gallery` AS `main`
+ INNER JOIN `catalog_product_entity_media_gallery_value_to_entity` AS `entity` ON main.value_id = entity.value_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value` AS `value` ON main.value_id = value.value_id AND value.store_id = 1 AND value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value` AS `default_value` ON main.value_id = default_value.value_id AND default_value.store_id = 0 AND default_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value_video` AS `value_video` ON value.value_id = value_video.value_id AND value.store_id = value_video.store_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value_video` AS `default_value_video` ON default_value.value_id = default_value_video.value_id AND default_value.store_id = default_value_video.store_id WHERE (main.attribute_id = '90') AND (main.disabled = 0) AND (entity.entity_id IN (2495, 2496, 2497, 2498, 2499, 2500, 2501, 2502, 2503, 2504, 2505, 2506, 2507, 2508, 2509))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity_tier_price`.`value_id` AS `price_id`, `catalog_product_entity_tier_price`.`website_id`, `catalog_product_entity_tier_price`.`all_groups`, `catalog_product_entity_tier_price`.`customer_group_id` AS `cust_group`, `catalog_product_entity_tier_price`.`value` AS `price`, `catalog_product_entity_tier_price`.`qty` AS `price_qty`, `catalog_product_entity_tier_price`.`percentage_value`, `catalog_product_entity_tier_price`.`entity_id` AS `product_id` FROM `catalog_product_entity_tier_price` WHERE (website_id = 0) AND (entity_id IN('2495', '2496', '2497', '2498', '2499', '2500', '2501', '2502', '2503', '2504', '2505', '2506', '2507', '2508', '2509')) ORDER BY `qty` ASC
+
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS12-XS-Black'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2495')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS12-XS-Blue'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2496')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS12-XS-Red'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2497')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS12-S-Black'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2498')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS12-S-Blue'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2499')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS12-S-Red'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2500')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS12-M-Black'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2501')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS12-M-Blue'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2502')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS12-M-Red'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2503')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS12-L-Black'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2504')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS12-L-Blue'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2505')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS12-L-Red'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2506')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS12-XL-Black'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2507')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS12-XL-Blue'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2508')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS12-XL-Red'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2509')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `e`.`entity_id` FROM `catalog_product_super_link` AS `l`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = l.parent_id WHERE (l.product_id IN('2510'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `tbl_selection`.`product_id`, `tbl_selection`.`parent_product_id`, `tbl_selection`.`option_id`, `parent`.*, `tbl_option`.`required` FROM `catalog_product_bundle_selection` AS `tbl_selection`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = tbl_selection.product_id AND e.required_options=0
+ INNER JOIN `catalog_product_entity` AS `parent` ON tbl_selection.parent_product_id = parent.entity_id
+ INNER JOIN `catalog_product_bundle_option` AS `tbl_option` ON tbl_option.option_id = tbl_selection.option_id WHERE (parent.entity_id = :parent_id)
+BIND: array (
+  ':parent_id' => '2510',
+)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity_tier_price`.`value_id` AS `price_id`, `catalog_product_entity_tier_price`.`website_id`, `catalog_product_entity_tier_price`.`all_groups`, `catalog_product_entity_tier_price`.`customer_group_id` AS `cust_group`, `catalog_product_entity_tier_price`.`value` AS `price`, `catalog_product_entity_tier_price`.`qty` AS `price_qty`, `catalog_product_entity_tier_price`.`percentage_value` FROM `catalog_product_entity_tier_price` WHERE (website_id = 0) AND (entity_id = '2510') ORDER BY `qty` ASC
+
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `e`.`entity_id` FROM `catalog_product_super_link` AS `l`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = l.parent_id WHERE (l.product_id IN('2510'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `tbl_selection`.`product_id`, `tbl_selection`.`parent_product_id`, `tbl_selection`.`option_id`, `parent`.*, `tbl_option`.`required` FROM `catalog_product_bundle_selection` AS `tbl_selection`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = tbl_selection.product_id AND e.required_options=0
+ INNER JOIN `catalog_product_entity` AS `parent` ON tbl_selection.parent_product_id = parent.entity_id
+ INNER JOIN `catalog_product_bundle_option` AS `tbl_option` ON tbl_option.option_id = tbl_selection.option_id WHERE (parent.entity_id = :parent_id)
+BIND: array (
+  ':parent_id' => '2510',
+)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `catalog_product_super_attribute` AS `main_table` WHERE (((((`product_id` = '2446'))))) ORDER BY position  ASC
+
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `def`.*, IF(store.use_default IS NULL, def.use_default, store.use_default) AS `use_default`, IF(store.value IS NULL, def.value, store.value) AS `label` FROM `catalog_product_super_attribute_label` AS `def`
+ LEFT JOIN `catalog_product_super_attribute_label` AS `store` ON store.product_super_attribute_id = def.product_super_attribute_id AND store.store_id = 1 WHERE (def.product_super_attribute_id IN (345, 346)) AND (def.store_id = 0)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `entity`.`sku`, `product_entity`.`entity_id` AS `product_id`, `attribute`.`attribute_code`, `entity_value`.`value` AS `value_index`, `attribute_label`.`value` AS `super_attribute_label` FROM `catalog_product_super_attribute` AS `super_attribute`
+ INNER JOIN `catalog_product_entity` AS `product_entity` ON product_entity.entity_id = super_attribute.product_id
+ INNER JOIN `catalog_product_super_link` AS `product_link` ON product_link.parent_id = super_attribute.product_id
+ INNER JOIN `eav_attribute` AS `attribute` ON attribute.attribute_id = super_attribute.attribute_id
+ INNER JOIN `catalog_product_entity` AS `entity` ON entity.entity_id = product_link.product_id
+ INNER JOIN `catalog_product_entity_int` AS `entity_value` ON entity_value.attribute_id = super_attribute.attribute_id AND entity_value.store_id = 0 AND entity_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_super_attribute_label` AS `attribute_label` ON super_attribute.product_super_attribute_id = attribute_label.product_super_attribute_id AND attribute_label.store_id = 0
+ LEFT JOIN `eav_attribute_option` AS `attribute_option` ON attribute_option.option_id = entity_value.value WHERE (super_attribute.product_id = 2446) AND (attribute.attribute_id = '143') ORDER BY `attribute_option`.`sort_order` ASC
+
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `entity`.`sku`, `product_entity`.`entity_id` AS `product_id`, `attribute`.`attribute_code`, `entity_value`.`value` AS `value_index`, `attribute_label`.`value` AS `super_attribute_label` FROM `catalog_product_super_attribute` AS `super_attribute`
+ INNER JOIN `catalog_product_entity` AS `product_entity` ON product_entity.entity_id = super_attribute.product_id
+ INNER JOIN `catalog_product_super_link` AS `product_link` ON product_link.parent_id = super_attribute.product_id
+ INNER JOIN `eav_attribute` AS `attribute` ON attribute.attribute_id = super_attribute.attribute_id
+ INNER JOIN `catalog_product_entity` AS `entity` ON entity.entity_id = product_link.product_id
+ INNER JOIN `catalog_product_entity_int` AS `entity_value` ON entity_value.attribute_id = super_attribute.attribute_id AND entity_value.store_id = 0 AND entity_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_super_attribute_label` AS `attribute_label` ON super_attribute.product_super_attribute_id = attribute_label.product_super_attribute_id AND attribute_label.store_id = 0
+ LEFT JOIN `eav_attribute_option` AS `attribute_option` ON attribute_option.option_id = entity_value.value WHERE (super_attribute.product_id = 2446) AND (attribute.attribute_id = '93') ORDER BY `attribute_option`.`sort_order` ASC
+
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT COUNT(DISTINCT e.entity_id) FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id
+ INNER JOIN `catalog_product_website` AS `product_website` ON product_website.product_id = e.entity_id AND product_website.website_id = 1
+ INNER JOIN `catalog_product_entity_int` AS `at_status_default` ON (`at_status_default`.`entity_id` = `e`.`entity_id`) AND (`at_status_default`.`attribute_id` = '97') AND `at_status_default`.`store_id` = 0
+ LEFT JOIN `catalog_product_entity_int` AS `at_status` ON (`at_status`.`entity_id` = `e`.`entity_id`) AND (`at_status`.`attribute_id` = '97') AND (`at_status`.`store_id` = 1)
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id WHERE (IF(at_status.value_id > 0, at_status.value, at_status_default.value) = '1') AND (stock_status_index.stock_status = 1) AND (link_table.parent_id in ('2446'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: (SELECT `child`.`entity_id` FROM `catalog_product_entity` AS `parent`
+ INNER JOIN `catalog_product_relation` AS `link` ON link.parent_id = parent.entity_id
+ INNER JOIN `catalog_product_entity` AS `child` ON child.entity_id = link.child_id
+ INNER JOIN `catalog_product_index_price` AS `t` ON t.entity_id = child.entity_id
+ LEFT JOIN `catalog_product_entity_int` AS `status_global_attr` ON status_global_attr.entity_id = child.entity_id AND status_global_attr.attribute_id = 97 AND status_global_attr.store_id = 0
+ LEFT JOIN `catalog_product_entity_int` AS `status_attr` ON status_attr.entity_id = child.entity_id AND status_attr.attribute_id = 97 AND status_attr.store_id = 1
+ INNER JOIN `cataloginventory_stock_status` AS `stock` ON stock.product_id = child.entity_id WHERE (parent.entity_id = '2446') AND (t.website_id = '1') AND (t.customer_group_id = 0) AND (IFNULL(status_attr.value, status_global_attr.value) = 1) AND (stock.stock_status = 1) ORDER BY `t`.`min_price` ASC, `child`.`entity_id` ASC
+ LIMIT 1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `e`.*, `stock_status_index`.`stock_status` AS `is_salable` FROM `catalog_product_entity` AS `e`
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id WHERE (`e`.`entity_id` IN('2431')) AND (stock_status_index.stock_status = 1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_decimal` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_decimal` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2431)) AND (t_d.attribute_id IN ('77', '78')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_datetime` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_datetime` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2431)) AND (t_d.attribute_id IN ('79', '80')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_int` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_int` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2431)) AND (t_d.attribute_id IN ('134')) AND (t_d.store_id = IFNULL(t_s.store_id, 0))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity_tier_price`.`value_id` AS `price_id`, `catalog_product_entity_tier_price`.`website_id`, `catalog_product_entity_tier_price`.`all_groups`, `catalog_product_entity_tier_price`.`customer_group_id` AS `cust_group`, `catalog_product_entity_tier_price`.`value` AS `price`, `catalog_product_entity_tier_price`.`qty` AS `price_qty`, `catalog_product_entity_tier_price`.`percentage_value` FROM `catalog_product_entity_tier_price` WHERE (website_id = 0) AND (entity_id = '2431') ORDER BY `qty` ASC
+
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalogrule_product_price`.`product_id`, `catalogrule_product_price`.`rule_price` FROM `catalogrule_product_price` WHERE (rule_date = '2021-01-12') AND (website_id = '1') AND (customer_group_id = 0) AND (product_id IN('2431'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT COUNT(DISTINCT e.entity_id) FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id WHERE (((`e`.`required_options` != 1) OR (`e`.`required_options` IS NULL))) AND (link_table.parent_id in ('2446'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `e`.*, `link_table`.`parent_id`, `stock_status_index`.`stock_status` AS `is_salable`, `catalog_rule`.`rule_price` AS `catalog_rule_price` FROM `catalog_product_entity` AS `e`
+ INNER JOIN `catalog_product_super_link` AS `link_table` ON link_table.product_id = e.entity_id
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id
+ LEFT JOIN `catalogrule_product_price` AS `catalog_rule` ON catalog_rule.product_id = `e`.`entity_id` AND catalog_rule.website_id = '1' AND catalog_rule.customer_group_id = 0 AND catalog_rule.rule_date = '2021-01-12' WHERE (((`e`.`required_options` != 1) OR (`e`.`required_options` IS NULL))) AND (link_table.parent_id in ('2446')) AND (stock_status_index.stock_status = 1) AND (link_table.parent_id in ('2446'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_varchar` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_varchar` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2431, 2432, 2433, 2434, 2435, 2436, 2437, 2438, 2439, 2440, 2441, 2442, 2443, 2444, 2445)) AND (t_d.attribute_id IN ('87', '73', '88', '89', '109', '110', '111', '120', '128', '162')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_int` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_int` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2431, 2432, 2433, 2434, 2435, 2436, 2437, 2438, 2439, 2440, 2441, 2442, 2443, 2444, 2445)) AND (t_d.attribute_id IN ('143', '93', '97', '121', '123', '124', '125', '130', '133', '134', '99')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_text` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_text` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2431, 2432, 2433, 2434, 2435, 2436, 2437, 2438, 2439, 2440, 2441, 2442, 2443, 2444, 2445)) AND (t_d.attribute_id IN ('76')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_decimal` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_decimal` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2431, 2432, 2433, 2434, 2435, 2436, 2437, 2438, 2439, 2440, 2441, 2442, 2443, 2444, 2445)) AND (t_d.attribute_id IN ('77', '78', '119', '82')) AND (t_d.store_id = IFNULL(t_s.store_id, 0)) UNION ALL SELECT `t_d`.`attribute_id`, `e`.`entity_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `catalog_product_entity_datetime` AS `t_d`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = t_d.entity_id
+ LEFT JOIN `catalog_product_entity_datetime` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (e.entity_id IN (2431, 2432, 2433, 2434, 2435, 2436, 2437, 2438, 2439, 2440, 2441, 2442, 2443, 2444, 2445)) AND (t_d.attribute_id IN ('79', '80', '94', '95')) AND (t_d.store_id = IFNULL(t_s.store_id, 0))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `main`.`value_id`, `main`.`value` AS `file`, `main`.`media_type`, `entity`.`entity_id`, IFNULL(`value`.`label`, `default_value`.`label`) AS `label`, IFNULL(`value`.`position`, `default_value`.`position`) AS `position`, IFNULL(`value`.`disabled`, `default_value`.`disabled`) AS `disabled`, `default_value`.`label` AS `label_default`, `default_value`.`position` AS `position_default`, `default_value`.`disabled` AS `disabled_default`, IFNULL(`value_video`.`provider`, `default_value_video`.`provider`) AS `video_provider`, IFNULL(`value_video`.`url`, `default_value_video`.`url`) AS `video_url`, IFNULL(`value_video`.`title`, `default_value_video`.`title`) AS `video_title`, IFNULL(`value_video`.`description`, `default_value_video`.`description`) AS `video_description`, IFNULL(`value_video`.`metadata`, `default_value_video`.`metadata`) AS `video_metadata`, `default_value_video`.`provider` AS `video_provider_default`, `default_value_video`.`url` AS `video_url_default`, `default_value_video`.`title` AS `video_title_default`, `default_value_video`.`description` AS `video_description_default`, `default_value_video`.`metadata` AS `video_metadata_default` FROM `catalog_product_entity_media_gallery` AS `main`
+ INNER JOIN `catalog_product_entity_media_gallery_value_to_entity` AS `entity` ON main.value_id = entity.value_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value` AS `value` ON main.value_id = value.value_id AND value.store_id = 1 AND value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value` AS `default_value` ON main.value_id = default_value.value_id AND default_value.store_id = 0 AND default_value.entity_id = entity.entity_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value_video` AS `value_video` ON value.value_id = value_video.value_id AND value.store_id = value_video.store_id
+ LEFT JOIN `catalog_product_entity_media_gallery_value_video` AS `default_value_video` ON default_value.value_id = default_value_video.value_id AND default_value.store_id = default_value_video.store_id WHERE (main.attribute_id = '90') AND (main.disabled = 0) AND (entity.entity_id IN (2431, 2432, 2433, 2434, 2435, 2436, 2437, 2438, 2439, 2440, 2441, 2442, 2443, 2444, 2445))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity_tier_price`.`value_id` AS `price_id`, `catalog_product_entity_tier_price`.`website_id`, `catalog_product_entity_tier_price`.`all_groups`, `catalog_product_entity_tier_price`.`customer_group_id` AS `cust_group`, `catalog_product_entity_tier_price`.`value` AS `price`, `catalog_product_entity_tier_price`.`qty` AS `price_qty`, `catalog_product_entity_tier_price`.`percentage_value`, `catalog_product_entity_tier_price`.`entity_id` AS `product_id` FROM `catalog_product_entity_tier_price` WHERE (website_id = 0) AND (entity_id IN('2431', '2432', '2433', '2434', '2435', '2436', '2437', '2438', '2439', '2440', '2441', '2442', '2443', '2444', '2445')) ORDER BY `qty` ASC
+
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS04-XS-Black'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2431')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS04-XS-Orange'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2432')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS04-XS-Red'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2433')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS04-S-Black'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2434')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS04-S-Orange'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2435')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS04-S-Red'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2436')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS04-M-Black'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2437')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS04-M-Orange'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2438')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS04-M-Red'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2439')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS04-L-Black'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2440')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS04-L-Orange'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2441')
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS04-L-Red'))
+
+
+
+
+## 2021-01-12 17:55:56
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2442')
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS04-XL-Black'))
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2443')
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS04-XL-Orange'))
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2444')
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity`.`sku`, `catalog_product_entity`.`entity_id` FROM `catalog_product_entity` WHERE (sku IN ('MS04-XL-Red'))
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `cataloginventory_stock_status`.`qty` AS `quantity`, `cataloginventory_stock_status`.`stock_status` AS `is_salable` FROM `cataloginventory_stock_status` WHERE (product_id = '2445')
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `e`.`entity_id` FROM `catalog_product_super_link` AS `l`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = l.parent_id WHERE (l.product_id IN('2446'))
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `tbl_selection`.`product_id`, `tbl_selection`.`parent_product_id`, `tbl_selection`.`option_id`, `parent`.*, `tbl_option`.`required` FROM `catalog_product_bundle_selection` AS `tbl_selection`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = tbl_selection.product_id AND e.required_options=0
+ INNER JOIN `catalog_product_entity` AS `parent` ON tbl_selection.parent_product_id = parent.entity_id
+ INNER JOIN `catalog_product_bundle_option` AS `tbl_option` ON tbl_option.option_id = tbl_selection.option_id WHERE (parent.entity_id = :parent_id)
+BIND: array (
+  ':parent_id' => '2446',
+)
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_entity_tier_price`.`value_id` AS `price_id`, `catalog_product_entity_tier_price`.`website_id`, `catalog_product_entity_tier_price`.`all_groups`, `catalog_product_entity_tier_price`.`customer_group_id` AS `cust_group`, `catalog_product_entity_tier_price`.`value` AS `price`, `catalog_product_entity_tier_price`.`qty` AS `price_qty`, `catalog_product_entity_tier_price`.`percentage_value` FROM `catalog_product_entity_tier_price` WHERE (website_id = 0) AND (entity_id = '2446') ORDER BY `qty` ASC
+
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `e`.`entity_id` FROM `catalog_product_super_link` AS `l`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = l.parent_id WHERE (l.product_id IN('2446'))
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `tbl_selection`.`product_id`, `tbl_selection`.`parent_product_id`, `tbl_selection`.`option_id`, `parent`.*, `tbl_option`.`required` FROM `catalog_product_bundle_selection` AS `tbl_selection`
+ INNER JOIN `catalog_product_entity` AS `e` ON e.entity_id = tbl_selection.product_id AND e.required_options=0
+ INNER JOIN `catalog_product_entity` AS `parent` ON tbl_selection.parent_product_id = parent.entity_id
+ INNER JOIN `catalog_product_bundle_option` AS `tbl_option` ON tbl_option.option_id = tbl_selection.option_id WHERE (parent.entity_id = :parent_id)
+BIND: array (
+  ':parent_id' => '2446',
+)
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.`stock_id` FROM `inventory_stock_sales_channel` WHERE (type = 'website') AND (code = 'base')
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock`.* FROM `inventory_stock` WHERE (`inventory_stock`.`stock_id`=1)
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `inventory_stock_sales_channel`.* FROM `inventory_stock_sales_channel` WHERE (stock_id = 1)
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `catalog_product_link_attribute`.`product_link_attribute_id` AS `id`, `catalog_product_link_attribute`.`product_link_attribute_code` AS `code`, `catalog_product_link_attribute`.`data_type` AS `type` FROM `catalog_product_link_attribute` WHERE (link_type_id = 4)
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `e`.*, `at_inventory_in_stock`.`is_in_stock` AS `inventory_in_stock`, `price_index`.`price`, `price_index`.`tax_class_id`, `price_index`.`final_price`, IF(price_index.tier_price IS NOT NULL, LEAST(price_index.min_price, price_index.tier_price), price_index.min_price) AS `minimal_price`, `price_index`.`min_price`, `price_index`.`max_price`, `price_index`.`tier_price`, `cat_index`.`position` AS `cat_index_position`, `stock_status_index`.`stock_status` AS `is_salable`, `links`.`link_id`, `links`.`product_id` AS `_linked_to_product_id`, `link_attribute_position_int`.`value` AS `position` FROM `catalog_product_entity` AS `e`
+ INNER JOIN `cataloginventory_stock_item` AS `at_inventory_in_stock` ON (at_inventory_in_stock.`product_id`=e.entity_id) AND ((at_inventory_in_stock.use_config_manage_stock = 0 AND at_inventory_in_stock.manage_stock=1 AND at_inventory_in_stock.is_in_stock=1) OR (at_inventory_in_stock.use_config_manage_stock = 0 AND at_inventory_in_stock.manage_stock=0) OR (at_inventory_in_stock.use_config_manage_stock = 1 AND at_inventory_in_stock.is_in_stock=1))
+ INNER JOIN `catalog_product_index_price` AS `price_index` ON price_index.entity_id = e.entity_id AND price_index.customer_group_id = 0 AND price_index.website_id = '1'
+ INNER JOIN `catalog_category_product_index_store1` AS `cat_index` ON cat_index.product_id=e.entity_id AND cat_index.store_id=1 AND cat_index.visibility IN(2, 4) AND cat_index.category_id=2
+ INNER JOIN `cataloginventory_stock_status` AS `stock_status_index` ON e.entity_id = stock_status_index.product_id
+ INNER JOIN `catalog_product_link` AS `links` ON links.linked_product_id = e.entity_id AND links.link_type_id = 4
+ LEFT JOIN `catalog_product_link_attribute_int` AS `link_attribute_position_int` ON link_attribute_position_int.link_id = links.link_id AND link_attribute_position_int.product_link_attribute_id = '2'
+ INNER JOIN `catalog_product_entity` AS `product_entity_table` ON links.product_id = product_entity_table.entity_id WHERE (stock_status_index.stock_status = 1) AND (links.product_id in ('2694')) AND (`e`.`entity_id` != '2694') ORDER BY `position` ASC
+
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `url_rewrite`.*, `relation`.`category_id`, `relation`.`product_id` FROM `url_rewrite`
+ LEFT JOIN `catalog_url_rewrite_product_category` AS `relation` ON url_rewrite.url_rewrite_id = relation.url_rewrite_id WHERE (url_rewrite.entity_type IN ('product')) AND (url_rewrite.entity_id IN (NULL)) AND (url_rewrite.store_id IN (1)) AND (url_rewrite.is_autogenerated IN (1)) AND (relation.category_id IS NULL)
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SHOW INDEX FROM `cms_block`
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `cms_block`.`block_id` FROM `cms_block`
+ INNER JOIN `cms_block_store` AS `cbs` ON cms_block.block_id = cbs.block_id WHERE (`cms_block`.`block_id`='1') AND (is_active = 1) AND (cbs.store_id in (1, 0)) ORDER BY `store_id` DESC
+ LIMIT 1
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `t`.* FROM `cms_block` AS `t` WHERE (block_id = '1')
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `cbs`.`store_id` FROM `cms_block_store` AS `cbs`
+ INNER JOIN `cms_block` AS `cb` ON cbs.block_id = cb.block_id WHERE (cb.block_id = :block_id)
+BIND: array (
+  ':block_id' => 1,
+)
+
+
+
+
+## 2021-01-12 17:55:57
+## 9248 ## QUERY
+SQL: SELECT `main_table`.* FROM `store` AS `main_table` WHERE (`main_table`.`website_id` IN('1')) ORDER BY CASE WHEN main_table.store_id = 0 THEN 0 ELSE 1 END ASC, main_table.sort_order ASC, main_table.name ASC
+
+
+
+
+

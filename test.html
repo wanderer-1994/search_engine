@@ -1,0 +1,10 @@
+SELECT product_id, GROUP_CONCAT(entity_id) AS entity_ids  FROM (
+    SELECT
+    IF((`cpsl`.parent_id IS NOT NULL AND `cpsl`.parent_id != ''), `cpsl`.parent_id, `cpe`.entity_id) AS product_id, entity_id
+    FROM `magento24`.catalog_product_entity AS `cpe`
+    LEFT JOIN `magento24`.catalog_product_super_link AS `cpsl` ON `cpe`.entity_id = `cpsl`.product_id
+    WHERE (
+        `cpe`.entity_id IN ('PR001', 'PR004', 'PR005')
+    )
+) AS `alias`
+GROUP BY product_id;

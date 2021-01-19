@@ -1,0 +1,26 @@
+INSERT INTO `ecommerce`.product_eav_int
+(attribute_id, entity_id, value)
+VALUES
+# General
+('price', 'PR001', 30000),
+('price', 'PR002', 22000),
+('price', 'PR003', 230000),
+('price', 'PR004', 24000),
+('price', 'PR005', 25000),
+('visible', 'PR001', 1),
+('visible', 'PR002', 1),
+('visible', 'PR004', 1),
+('visible', 'PR005', 0),
+# Tai nghe
+('frequency', 'PR001', 20000),
+('frequency', 'PR002', 22000),
+# Cáp sạc
+('is_quick_charge', 'PR001', 0),
+('is_quick_charge', 'PR002', 1),
+('universal_use', 'PR001', 1),
+('universal_use', 'PR002', 0),
+# Sạc dự phòng
+('capacity', 'PR001', 25000),
+('capacity', 'PR002', 35000),
+('weight', 'PR001', 235),
+('weight', 'PR002', 195)

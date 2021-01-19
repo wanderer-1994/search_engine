@@ -1,0 +1,5 @@
+INSERT INTO `ecommerce`.product_eav_datetime
+(attribute_id, entity_id, value)
+VALUES
+# General
+('brand', 'Thương hiệu', 'select', 'varchar', '', '1', '1', null),

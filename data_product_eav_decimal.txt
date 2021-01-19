@@ -1,0 +1,11 @@
+INSERT INTO `ecommerce`.product_eav_decimal
+(attribute_id, entity_id, value)
+VALUES
+# Tai nghe
+('impedance', 'PR001', 32),
+('impedance', 'PR002', 17.5),
+('impedance', 'PR003', 17.5),
+# Cáp sạc
+('length', 'PR001', 1.2),
+('length', 'PR002', 2),
+('length', 'PR003', 1.2)

@@ -1,0 +1,95 @@
+### Select all product_id (parent) after product search query
+SELECT DISTINCT IF((parent IS NOT NULL and parent != ''), parent, entity_id) as product_id
+FROM ecommerce.product_entity WHERE (
+    entity_id IN ('PR001', 'PR004', 'PR005')
+);
+
+### 
+SELECT
+IF((`cpsl`.parent_id IS NOT NULL AND `cpsl`.parent_id != ''), `cpsl`.parent_id, `cpe`.entity_id) AS product_id
+FROM `magento24`.catalog_product_entity AS `cpe`
+LEFT JOIN `magento24`.catalog_product_super_link AS `cpsl` ON `cpe`.entity_id = `cpsl`.product_id
+WHERE (
+    `cpe`.entity_id IN ('PR001', 'PR004', 'PR005')
+)
+
+### Select info of all product entities after find all product_id (parent)
+SELECT `pe`.entity_id, `pe`.product_id, `pe`.type_id, `pe`.value, `attributes`.*  FROM (
+    SELECT
+        `pe`.entity_id, IF((`pe`.parent is not null and `pe`.parent != ''), `pe`.parent, `pe`.entity_id) as product_id,
+        `pe`.type_id, `eav`.attribute_id, `eav`.value
+    FROM `ecommerce`.product_entity as `pe`
+    LEFT JOIN `ecommerce`.product_eav_int as `eav` ON `eav`.entity_id = `pe`.entity_id
+    WHERE `pe`.entity_id in ('PR001', 'PR002') or `pe`.parent in ('PR001', 'PR002')
+    UNION
+    SELECT
+        `pe`.entity_id, IF((`pe`.parent is not null and `pe`.parent != ''), `pe`.parent, `pe`.entity_id) as product_id,
+        `pe`.type_id, `eav`.attribute_id, `eav`.value
+    FROM `ecommerce`.product_entity as `pe`
+    LEFT JOIN `ecommerce`.product_eav_decimal as `eav` ON `eav`.entity_id = `pe`.entity_id
+    WHERE `pe`.entity_id in ('PR001', 'PR002') or `pe`.parent in ('PR001', 'PR002')
+    UNION
+    SELECT
+        `pe`.entity_id, IF((`pe`.parent is not null and `pe`.parent != ''), `pe`.parent, `pe`.entity_id) as product_id,
+        `pe`.type_id, `eav`.attribute_id, `eav`.value
+    FROM `ecommerce`.product_entity as `pe`
+    LEFT JOIN `ecommerce`.product_eav_varchar as `eav` ON `eav`.entity_id = `pe`.entity_id
+    WHERE `pe`.entity_id in ('PR001', 'PR002') or `pe`.parent in ('PR001', 'PR002')
+    UNION
+    SELECT
+        `pe`.entity_id, IF((`pe`.parent is not null and `pe`.parent != ''), `pe`.parent, `pe`.entity_id) as product_id,
+        `pe`.type_id, `eav`.attribute_id, `eav`.value
+    FROM `ecommerce`.product_entity as `pe`
+    LEFT JOIN `ecommerce`.product_eav_text as `eav` ON `eav`.entity_id = `pe`.entity_id
+    WHERE `pe`.entity_id in ('PR001', 'PR002') or `pe`.parent in ('PR001', 'PR002')
+    UNION
+    SELECT
+        `pe`.entity_id, IF((`pe`.parent is not null and `pe`.parent != ''), `pe`.parent, `pe`.entity_id) as product_id,
+        `pe`.type_id, `eav`.attribute_id, `eav`.value
+    FROM `ecommerce`.product_entity as `pe`
+    LEFT JOIN `ecommerce`.product_eav_datetime as `eav` ON `eav`.entity_id = `pe`.entity_id
+    WHERE `pe`.entity_id in ('PR001', 'PR002') or `pe`.parent in ('PR001', 'PR002')
+    UNION
+    SELECT
+        `pe`.entity_id, IF((`pe`.parent is not null and `pe`.parent != ''), `pe`.parent, `pe`.entity_id) as product_id,
+        `pe`.type_id, `eav`.attribute_id, `eav`.value
+    FROM `ecommerce`.product_entity as `pe`
+    LEFT JOIN `ecommerce`.product_eav_multi_value as `eav` ON `eav`.entity_id = `pe`.entity_id
+    WHERE `pe`.entity_id in ('PR001', 'PR002') or `pe`.parent in ('PR001', 'PR002')
+) as `pe`
+LEFT JOIN `ecommerce`.product_eav as `attributes` ON `attributes`.attribute_id = `pe`.attribute_id
+ORDER BY `pe`.product_id, `pe`.entity_id
+
+### Recursive get all child category by parent category
+
+### Work
+SELECT GROUP_CONCAT(lv SEPARATOR ',') FROM (
+SELECT @pv:=(SELECT GROUP_CONCAT(entity_id SEPARATOR ',') FROM ecommerce.category_entity 
+WHERE FIND_IN_SET(parent, @pv)) AS lv FROM ecommerce.category_entity 
+JOIN
+(SELECT @pv:='sound_accessory') tmp
+) a;
+
+### Work
+WITH RECURSIVE `cte` (entity_id) AS (
+    SELECT entity_id
+    FROM `ecommerce`.category_entity
+    WHERE entity_id IN ('sound_accessory')
+    UNION ALL
+    SELECT p.entity_id
+    FROM `ecommerce`.category_entity AS `p`
+    INNER JOIN cte ON `p`.parent = `cte`.entity_id
+)
+SELECT `pca`.product_id, 100 AS `weight` FROM `ecommerce`.product_category_assignment AS `pca`
+INNER JOIN `ecommerce`.product_entity AS `pe` ON `pe`.entity_id = `pca`.product_id
+WHERE category_id IN(SELECT DISTINCT entity_id FROM `cte`);
+
+### Investigate
+select  entity_id,
+        name,
+        parent 
+from    (select * from ecommerce.category_entity
+         order by parent, entity_id) AS cat_sorted,
+        (select @pv := 'sound_accessory') initialisation
+where   find_in_set(parent, @pv)
+and     length(@pv := concat(@pv, ',', entity_id));
